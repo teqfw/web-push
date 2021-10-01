@@ -1,6 +1,8 @@
 {
-  "autoload": {
-    "ns": "TeqFw_Plugin",
-    "path": "./src"
+  "@teqfw/di": {
+    "autoload": {
+      "ns": "TeqFw_Web_Push",
+      "path": "./src"
+    }
   }
 }

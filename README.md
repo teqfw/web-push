@@ -1,3 +1,3 @@
-# @teqfw/plugin
+# @teqfw/web-push
 
-Template repository to create repos for Tequila plugins.
+TeqFW plugin to use Web Push API in teq-apps.
