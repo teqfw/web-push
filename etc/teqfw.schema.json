@@ -1,0 +1,42 @@
+{
+  "package": {
+    "web": {
+      "package": {
+        "push": {
+          "comment": "@teqfw/web-push entities and packages.",
+          "entity": {
+            "subscription": {
+              "comment": "Users subscriptions.",
+              "attr": {
+                "id": {"type": "id"},
+                "user_ref": {"type": "ref"},
+                "date_created": {
+                  "comment": "Date-time for subscription registration.",
+                  "type": "datetime",
+                  "default": "current"
+                },
+                "endpoint": {"type": "string"},
+                "key_auth": {"type": "string"},
+                "key_p256dh": {"type": "string"}
+              },
+              "relation": {
+                "user": {
+                  "attrs": ["user_ref"],
+                  "ref": {
+                    "path": "/user",
+                    "attrs": ["id"]
+                  },
+                  "onDelete": "restrict",
+                  "onUpdate": "restrict"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "refs": {
+    "/user": ["id"]
+  }
+}
