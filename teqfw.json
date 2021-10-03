@@ -4,5 +4,10 @@
       "ns": "TeqFw_Web_Push",
       "path": "./src"
     }
+  },
+  "@teqfw/web": {
+    "services": [
+      "TeqFw_Web_Push_Back_Service_Load_ServerKey"
+    ]
   }
 }
