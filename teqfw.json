@@ -7,7 +7,8 @@
   },
   "@teqfw/web": {
     "services": [
-      "TeqFw_Web_Push_Back_Service_Load_ServerKey"
+      "TeqFw_Web_Push_Back_Service_Load_ServerKey",
+      "TeqFw_Web_Push_Back_Service_Subscript_Save"
     ]
   }
 }
