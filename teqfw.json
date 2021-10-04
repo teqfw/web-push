@@ -5,6 +5,11 @@
       "path": "./src"
     }
   },
+  "@teqfw/core": {
+    "commands": [
+      "TeqFw_Web_Push_Back_Cli_Send"
+    ]
+  },
   "@teqfw/web": {
     "services": [
       "TeqFw_Web_Push_Back_Service_Load_ServerKey",

@@ -7,8 +7,12 @@ const NS = 'TeqFw_Web_Push_Back_Api_Dto_Config_Local';
 
 // MODULE'S CLASSES
 export default class TeqFw_Web_Push_Back_Api_Dto_Config_Local {
-    /** @type {string} application server key to use with subscription (BJc...wzg) */
-    serverKey;
+    /** @type {string} */
+    email;
+    /** @type {string} private key to use with subscription */
+    keyPrivate;
+    /** @type {string} public key to use with subscription */
+    keyPublic;
 }
 
 /**
@@ -24,7 +28,9 @@ export class Factory {
          */
         this.create = function (data = null) {
             const res = new TeqFw_Web_Push_Back_Api_Dto_Config_Local();
-            res.serverKey = castString(data?.serverKey);
+            res.email = castString(data?.email);
+            res.keyPrivate = castString(data?.keyPrivate);
+            res.keyPublic = castString(data?.keyPublic);
             return res;
         }
     }

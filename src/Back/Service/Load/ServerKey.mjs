@@ -32,7 +32,7 @@ export default class TeqFw_Web_Push_Back_Service_Load_ServerKey {
                 const out = context.getOutData();
                 /** @type {TeqFw_Web_Push_Back_Api_Dto_Config_Local} */
                 const cfgLocal = config.getLocal(DEF.SHARED.NAME);
-                out.key = cfgLocal?.serverKey;
+                out.key = cfgLocal?.keyPublic;
             }
 
             // MAIN FUNCTIONALITY
