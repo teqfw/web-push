@@ -14,8 +14,8 @@ export default class TeqFw_Web_Push_Back_Service_Subscript_Save {
         // EXTRACT DEPS
         /** @type {TeqFw_Web_Push_Shared_Service_Route_Subscript_Save.Factory} */
         const route = spec['TeqFw_Web_Push_Shared_Service_Route_Subscript_Save#Factory$'];
-        /** @type {TeqFw_Db_Back_Api_RDb_IConnect} */
-        const rdb = spec['TeqFw_Db_Back_Api_RDb_IConnect$'];
+        /** @type {TeqFw_Db_Back_RDb_IConnect} */
+        const rdb = spec['TeqFw_Db_Back_RDb_IConnect$'];
         /** @type {TeqFw_Web_Push_Back_Act_Subscript_Add.act|Function} */
         const actAdd = spec['TeqFw_Web_Push_Back_Act_Subscript_Add$'];
 

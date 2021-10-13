@@ -17,8 +17,8 @@ Object.freeze(RESULT_CODE);
 
 export default function (spec) {
     // EXTRACT DEPS
-    /** @type {TeqFw_Db_Back_Api_Util.isPostgres|Function} */
-    const isPostgres = spec['TeqFw_Db_Back_Api_Util#isPostgres'];
+    /** @type {TeqFw_Db_Back_Util.isPostgres|Function} */
+    const isPostgres = spec['TeqFw_Db_Back_Util#isPostgres'];
     /** @type {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
     const ESubscript = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript#'];
 

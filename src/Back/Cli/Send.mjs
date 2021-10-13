@@ -26,8 +26,8 @@ export default function Factory(spec) {
     const DEF = spec['TeqFw_Web_Push_Back_Defaults$'];
     /** @type {TeqFw_Core_Shared_Logger} */
     const logger = spec['TeqFw_Core_Shared_Logger$'];
-    /** @type {TeqFw_Db_Back_Api_RDb_IConnect} */
-    const connector = spec['TeqFw_Db_Back_Api_RDb_IConnect$'];
+    /** @type {TeqFw_Db_Back_RDb_IConnect} */
+    const connector = spec['TeqFw_Db_Back_RDb_IConnect$'];
     /** @type {TeqFw_Core_Back_Api_Dto_Command.Factory} */
     const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$'];
     /** @type {TeqFw_Core_Back_Api_Dto_Command_Option.Factory} */
