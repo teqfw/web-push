@@ -27,6 +27,12 @@
   },
   "homepage": "https://github.com/teqfw/web-push#readme",
   "dependencies": {
+    "@teqfw/user": "github:@teqfw/user",
     "@teqfw/web": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "mysql2": "*",
+    "pg": "*"
   }
 }

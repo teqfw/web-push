@@ -17,21 +17,18 @@ Object.freeze(RESULT_CODE);
 
 export default function (spec) {
     // EXTRACT DEPS
-    /** @type {TeqFw_Db_Back_Util.isPostgres|Function} */
-    const isPostgres = spec['TeqFw_Db_Back_Util#isPostgres'];
-    /** @type {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
-    const ESubscript = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript#'];
-
-    // DEFINE WORKING VARS / PROPS
-
+    /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Meta} */
+    const metaSubscript = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript#Meta$'];
+    /** @type {TeqFw_Db_Back_Api_RDb_ICrudEngine} */
+    const crud = spec['TeqFw_Db_Back_Api_RDb_ICrudEngine$'];
 
     // DEFINE INNER FUNCTIONS
     /**
-     * @param trx
-     * @param userId
-     * @param endpoint
-     * @param auth
-     * @param p256dh
+     * @param {TeqFw_Db_Back_RDb_ITrans} trx
+     * @param {number} userId
+     * @param {string} endpoint
+     * @param {string} auth
+     * @param {string} p256dh
      * @return {Promise<{code: string, subscriptId: number}>}
      * @memberOf TeqFw_Web_Push_Back_Act_Subscript_Add
      */
@@ -40,33 +37,19 @@ export default function (spec) {
         /**
          * Get ID for current subscription by userId and auth key.
          *
-         * @param trx
+         * @param {TeqFw_Db_Back_RDb_ITrans} trx
          * @param {number} userId
          * @param {string} auth
          * @return {Promise<number|null>}
          */
         async function getSubscriptId(trx, userId, auth) {
-            let res = null;
-            const query = trx.from(ESubscript.ENTITY);
-            query.select();
-            query.where(ESubscript.A_USER_REF, userId);
-            query.where(ESubscript.A_KEY_AUTH, auth);
-            /** @type {Array} */
-            const rs = await query;
-            if (rs.length === 1) {
-                const [first] = rs;
-                res = first[ESubscript.A_ID];
-            }
-            return res;
-        }
-
-        async function add(trx, record) {
-            const isPg = isPostgres(trx.client);
-            const query = trx(ESubscript.ENTITY).insert(record);
-            if (isPg) query.returning(ESubscript.A_ID);
-            const rs = await query;
-            const [first] = rs;
-            return first;
+            const key = {
+                [metaSubscript.ATTR.USER_REF]: userId,
+                [metaSubscript.ATTR.KEY_AUTH]: auth
+            };
+            /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Dto} */
+            const found = await crud.readOne(key, metaSubscript, trx);
+            return found?.id ?? null;
         }
 
         // MAIN FUNCTIONALITY
@@ -75,13 +58,15 @@ export default function (spec) {
         if (subscriptId !== null) {
             code = RESULT_CODE.DUPLICATE;
         } else {
-            subscriptId = await add(trx, {
-                [ESubscript.A_USER_REF]: userId,
-                [ESubscript.A_ENDPOINT]: endpoint,
-                [ESubscript.A_KEY_AUTH]: auth,
-                [ESubscript.A_KEY_P256DH]: p256dh,
-                [ESubscript.A_DATE_CREATED]: new Date(),
-            });
+            const data = {
+                [metaSubscript.ATTR.USER_REF]: userId,
+                [metaSubscript.ATTR.ENDPOINT]: endpoint,
+                [metaSubscript.ATTR.KEY_AUTH]: auth,
+                [metaSubscript.ATTR.KEY_P256DH]: p256dh,
+                [metaSubscript.ATTR.DATE_CREATED]: new Date(),
+            };
+            const pk = await crud.create(data, metaSubscript, trx);
+            subscriptId = pk[metaSubscript.ATTR.ID];
             code = RESULT_CODE.SUCCESS;
 
         }
