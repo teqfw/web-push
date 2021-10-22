@@ -48,7 +48,7 @@ export default function (spec) {
                 [metaSubscript.ATTR.KEY_AUTH]: auth
             };
             /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Dto} */
-            const found = await crud.readOne(key, metaSubscript, trx);
+            const found = await crud.readOne(trx, metaSubscript, key);
             return found?.id ?? null;
         }
 
@@ -65,7 +65,7 @@ export default function (spec) {
                 [metaSubscript.ATTR.KEY_P256DH]: p256dh,
                 [metaSubscript.ATTR.DATE_CREATED]: new Date(),
             };
-            const pk = await crud.create(data, metaSubscript, trx);
+            const pk = await crud.create(trx, metaSubscript, data);
             subscriptId = pk[metaSubscript.ATTR.ID];
             code = RESULT_CODE.SUCCESS;
 

@@ -8,11 +8,10 @@ const NS = 'TeqFw_Web_Push_Back_Act_Subscript_GetByUserId';
 
 export default function (spec) {
     // EXTRACT DEPS
-    /** @type {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
-    const ESubscript = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript#'];
-
-    // DEFINE WORKING VARS / PROPS
-
+    /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Meta} */
+    const meta = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript#Meta$'];
+    /** @type {TeqFw_Db_Back_Api_RDb_ICrudEngine} */
+    const crud = spec['TeqFw_Db_Back_Api_RDb_ICrudEngine$'];
 
     // DEFINE INNER FUNCTIONS
     /**
@@ -25,15 +24,8 @@ export default function (spec) {
         // DEFINE INNER FUNCTIONS
 
         // MAIN FUNCTIONALITY
-        const items = [];
-        const query = trx.from(ESubscript.ENTITY);
-        query.select();
-        query.where(ESubscript.A_USER_REF, userId);
-        const rs = await query;
-        for (const one of rs) {
-            const item = Object.assign(new ESubscript(), one);
-            items.push(item);
-        }
+        const where = {[meta.ATTR.USER_REF]: userId};
+        const items = await crud.readSet(trx, meta, where);
         return {items};
     }
 
