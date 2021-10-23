@@ -17,10 +17,15 @@ Object.freeze(RESULT_CODE);
 
 export default function (spec) {
     // EXTRACT DEPS
-    /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Meta} */
-    const metaSubscript = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript#Meta$'];
+    /** @type {TeqFw_Db_Back_RDb_Meta_IEntity|TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
+    const meta = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$'];
     /** @type {TeqFw_Db_Back_Api_RDb_ICrudEngine} */
     const crud = spec['TeqFw_Db_Back_Api_RDb_ICrudEngine$'];
+
+    // DEFINE WORKING VARS / PROPS
+    /** @type {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.ATTR} */
+    const ATTR = meta.getAttributes();
+
 
     // DEFINE INNER FUNCTIONS
     /**
@@ -44,11 +49,11 @@ export default function (spec) {
          */
         async function getSubscriptId(trx, userId, auth) {
             const key = {
-                [metaSubscript.ATTR.USER_REF]: userId,
-                [metaSubscript.ATTR.KEY_AUTH]: auth
+                [ATTR.USER_REF]: userId,
+                [ATTR.KEY_AUTH]: auth
             };
             /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Dto} */
-            const found = await crud.readOne(trx, metaSubscript, key);
+            const found = await crud.readOne(trx, meta, key);
             return found?.id ?? null;
         }
 
@@ -59,14 +64,14 @@ export default function (spec) {
             code = RESULT_CODE.DUPLICATE;
         } else {
             const data = {
-                [metaSubscript.ATTR.USER_REF]: userId,
-                [metaSubscript.ATTR.ENDPOINT]: endpoint,
-                [metaSubscript.ATTR.KEY_AUTH]: auth,
-                [metaSubscript.ATTR.KEY_P256DH]: p256dh,
-                [metaSubscript.ATTR.DATE_CREATED]: new Date(),
+                [ATTR.USER_REF]: userId,
+                [ATTR.ENDPOINT]: endpoint,
+                [ATTR.KEY_AUTH]: auth,
+                [ATTR.KEY_P256DH]: p256dh,
+                [ATTR.DATE_CREATED]: new Date(),
             };
-            const pk = await crud.create(trx, metaSubscript, data);
-            subscriptId = pk[metaSubscript.ATTR.ID];
+            const pk = await crud.create(trx, meta, data);
+            subscriptId = pk[ATTR.ID];
             code = RESULT_CODE.SUCCESS;
 
         }

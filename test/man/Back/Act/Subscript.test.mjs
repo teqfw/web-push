@@ -12,8 +12,8 @@ import {loadRoot} from '../../lib/util.mjs';
 const schema = await container.get('TeqFw_Db_Back_RDb_Schema$');
 /** @type {TeqFw_Db_Back_Api_RDb_ICrudEngine} */
 const crud = await container.get('TeqFw_Db_Back_Api_RDb_ICrudEngine$');
-/** @type {TeqFw_User_Back_Store_RDb_Schema_User.Meta} */
-const metaUser = await container.get('TeqFw_User_Back_Store_RDb_Schema_User#Meta$');
+/** @type {TeqFw_User_Back_Store_RDb_Schema_User} */
+const meta = await container.get('TeqFw_User_Back_Store_RDb_Schema_User$');
 
 /** @type {TeqFw_Web_Push_Back_Act_Subscript_Add.act|Function} */
 const actAdd = await container.get('TeqFw_Web_Push_Back_Act_Subscript_Add$');
@@ -21,6 +21,8 @@ const actAdd = await container.get('TeqFw_Web_Push_Back_Act_Subscript_Add$');
 const actGet = await container.get('TeqFw_Web_Push_Back_Act_Subscript_GetByUserId$');
 
 // prepare this unit runtime objects
+/** @type {typeof TeqFw_User_Back_Store_RDb_Schema_User.ATTR} */
+const ATTR = meta.getAttributes();
 const USER1_ID = 1;
 const path = cfgTest.path.root;
 const {dem, cfg} = await loadRoot(container, path);
@@ -38,8 +40,8 @@ describe('Act_Subscript', function () {
         // add data
         const user1 = {};
         const trx = await conn.startTransaction();
-        const key = await crud.create(trx, metaUser, user1);
-        assert(key[metaUser.ATTR.ID] === USER1_ID);
+        const key = await crud.create(trx, meta, user1);
+        assert(key[ATTR.ID] === USER1_ID);
         await trx.commit();
         await conn.disconnect();
     });
