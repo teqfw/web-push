@@ -2,13 +2,6 @@
   "name": "@teqfw/web-push",
   "version": "0.1.0",
   "description": "TeqFW plugin to use Web Push API in teq-apps.",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/teqfw/web-push.git"
-  },
   "keywords": [
     "ecmascript 2015",
     "es6+",
@@ -20,17 +13,25 @@
     "web push api",
     "web-apps"
   ],
-  "author": "Alex Gusev <alex@flancer64.com>",
-  "license": "Apache-2.0",
+  "homepage": "https://github.com/teqfw/web-push#readme",
   "bugs": {
     "url": "https://github.com/teqfw/web-push/issues"
   },
-  "homepage": "https://github.com/teqfw/web-push#readme",
+  "license": "Apache-2.0",
+  "author": "Alex Gusev <alex@flancer64.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teqfw/web-push.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "@teqfw/user": "github:@teqfw/user",
     "@teqfw/web": "*"
   },
   "devDependencies": {
+    "@teqfw/test": "github:@teqfw/test",
     "mocha": "*",
     "mysql2": "*",
     "pg": "*",

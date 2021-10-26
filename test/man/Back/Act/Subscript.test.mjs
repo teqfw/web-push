@@ -2,7 +2,7 @@
  * Add/get subscriptions using actions.
  */
 import assert from 'assert';
-import {container, cfg as cfgTest, dbConnect} from '../../../TestEnv.mjs';
+import {container, config, dbConnect} from '@teqfw/test';
 import {describe, it} from 'mocha';
 import {loadRoot} from '../../lib/util.mjs';
 
@@ -24,7 +24,7 @@ const actGet = await container.get('TeqFw_Web_Push_Back_Act_Subscript_GetByUserI
 /** @type {typeof TeqFw_User_Back_Store_RDb_Schema_User.ATTR} */
 const ATTR = meta.getAttributes();
 const USER1_ID = 1;
-const path = cfgTest.path.root;
+const path = config.pathToRoot;
 const {dem, cfg} = await loadRoot(container, path);
 describe('Act_Subscript', function () {
 

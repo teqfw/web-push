@@ -1,7 +1,7 @@
 /**
  * Drop/create DB schema for manual tests.
  */
-import {container, cfg as cfgTest, dbConnect} from '../TestEnv.mjs';
+import {config, container, dbConnect} from '@teqfw/test';
 import {describe, it} from 'mocha';
 import {loadRoot} from './lib/util.mjs';
 
@@ -12,7 +12,7 @@ const schema = await container.get('TeqFw_Db_Back_RDb_Schema$');
 
 
 // prepare this unit runtime objects
-const path = cfgTest.path.root;
+const path = config.pathToRoot;
 const {dem, cfg} = await loadRoot(container, path);
 
 
