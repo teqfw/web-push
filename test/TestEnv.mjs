@@ -96,15 +96,19 @@ const localCfg = await (async function (cfg, container) {
      * @return {Object}
      */
     function generateDefault() {
-        const connection = {
+        const connMyPg = {
             "database": "teqfw_db_test",
             "host": "127.0.0.1",
             "password": "PasswordToConnectToTeqFWDb",
             "user": "teqfw"
         };
+        const connSqlite = {
+            "filename": "./mydb.sqlite"
+        };
         return {
-            mariadb: {client: "mysql2", connection},
-            pg: {client: "pg", connection}
+            mariadb: {client: "mysql2", connection: connMyPg},
+            pg: {client: "pg", connection: connMyPg},
+            sqlite: {client: "sqlite3", connection: connSqlite}
         };
     }
 
@@ -127,8 +131,9 @@ const localCfg = await (async function (cfg, container) {
 const dbConnect = async function () {
     /** @type {TeqFw_Db_Back_RDb_Connect} */
     const conn = await container.get('TeqFw_Db_Back_RDb_Connect$$'); // instance
-    await conn.init(localCfg.mariadb);
-    // await conn.init(localCfg.pg);
+    // await conn.init(localCfg.mariadb);
+    await conn.init(localCfg.pg);
+    // await conn.init(localCfg.sqlite);
     return conn;
 }
 

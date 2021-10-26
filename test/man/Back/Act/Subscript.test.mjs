@@ -65,6 +65,7 @@ describe('Act_Subscript', function () {
             assert(id1 === id2);
             await trx.commit();
         } catch (e) {
+            console.log(e);
             await trx.rollback();
         }
         await conn.disconnect();

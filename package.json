@@ -33,6 +33,7 @@
   "devDependencies": {
     "mocha": "*",
     "mysql2": "*",
-    "pg": "*"
+    "pg": "*",
+    "sqlite3": "*"
   }
 }
