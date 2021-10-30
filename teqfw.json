@@ -7,7 +7,8 @@
   },
   "@teqfw/core": {
     "commands": [
-      "TeqFw_Web_Push_Back_Cli_Send"
+      "TeqFw_Web_Push_Back_Cli_Send",
+      "TeqFw_Web_Push_Back_Cli_Key_Create"
     ]
   },
   "@teqfw/web": {
