@@ -24,10 +24,16 @@ export default function (spec) {
     const DEF = spec['TeqFw_Web_Push_Back_Defaults$'];
     /** @type {TeqFw_Core_Back_Config} */
     const config = spec['TeqFw_Core_Back_Config$'];
+    /** @type {TeqFw_Web_Push_Back_Act_Subscript_LoadKeys.act|function} */
+    const actLoadKeys = spec['TeqFw_Web_Push_Back_Act_Subscript_LoadKeys$'];
 
-    // DEFINE WORKING VARS / PROPS
+    // WORKING VARS / PROPS
+    /** @type {TeqFw_Web_Push_Back_Api_Dto_Config_Local} */
+    const cfgLocal = config.getLocal(DEF.SHARED.NAME);
+    const email = `mailto:${cfgLocal?.email}`;
+    const {publicKey, privateKey} = actLoadKeys();
 
-    // DEFINE INNER FUNCTIONS
+    // INNER FUNCTIONS
     /**
      *
      * @param title
@@ -43,14 +49,11 @@ export default function (spec) {
 
         // MAIN FUNCTIONALITY
         let res;
-
         try {
-            /** @type {TeqFw_Web_Push_Back_Api_Dto_Config_Local} */
-            const cfgLocal = config.getLocal(DEF.SHARED.NAME);
             webPush.setVapidDetails(
-                `mailto:${cfgLocal?.email}`,
-                cfgLocal?.keyPublic,
-                cfgLocal?.keyPrivate
+                email,
+                publicKey,
+                privateKey
             );
             const pushSubscription = {endpoint, keys: {p256dh, auth}};
             const payload = {title, body};
@@ -58,10 +61,12 @@ export default function (spec) {
         } catch (e) {
             console.log(e);
         }
-        return {res};
+        return res;
     }
 
     // MAIN FUNCTIONALITY
+
+
     Object.defineProperty(act, 'name', {value: `${NS}.${act.name}`});
     act.RESULT_CODE = RESULT_CODE;
     return act;

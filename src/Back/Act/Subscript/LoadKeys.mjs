@@ -21,11 +21,10 @@ export default function (spec) {
 
     // DEFINE INNER FUNCTIONS
     /**
-     * @param {*} opts
      * @return {{publicKey: string, privateKey: string}}
      * @memberOf TeqFw_Web_Push_Back_Act_Subscript_LoadKeys
      */
-    function act(opts) {
+    function act() {
         const root = config.getBoot().projectRoot;
         const path = join(root, DEF.FILE_VAPID_KEYS);
         const {publicKey, privateKey} = readJson(path);

@@ -24,7 +24,7 @@ export default class TeqFw_Web_Push_Sw_Worker {
                 console.log('This push event has data: ', JSON.stringify(json));
                 const opts = {
                     body: json.body,
-                    icon: 'https://bwl.local.teqfw.com/push/img/favicon-192.png'
+                    icon: './img/favicon-192.png'
                 };
                 const promiseChain = self.registration.showNotification(json.title, opts);
                 event.waitUntil(promiseChain);
