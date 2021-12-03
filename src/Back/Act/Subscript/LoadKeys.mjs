@@ -4,8 +4,9 @@
  * @namespace TeqFw_Web_Push_Back_Act_Subscript_LoadKeys
  */
 // MODULE'S IMPORTS
+import {existsSync, writeFileSync} from 'fs';
 import {join} from "path";
-
+import webPush from "web-push";
 
 // MODULE'S VARS
 const NS = 'TeqFw_Web_Push_Back_Act_Subscript_LoadKeys';
@@ -27,8 +28,15 @@ export default function (spec) {
     function act() {
         const root = config.getBoot().projectRoot;
         const path = join(root, DEF.FILE_VAPID_KEYS);
-        const {publicKey, privateKey} = readJson(path);
-        return {publicKey, privateKey};
+        if(existsSync(path)) {
+            const {publicKey, privateKey} = readJson(path);
+            return {publicKey, privateKey};
+        } else {
+            const vapidKeys = webPush.generateVAPIDKeys();
+            const data = JSON.stringify(vapidKeys);
+            writeFileSync(path, data);
+            return vapidKeys;
+        }
     }
 
     // MAIN FUNCTIONALITY
