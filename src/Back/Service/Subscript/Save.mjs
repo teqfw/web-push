@@ -7,7 +7,7 @@
 const NS = 'TeqFw_Web_Push_Back_Service_Subscript_Save';
 
 /**
- * @implements TeqFw_Web_Back_Api_Service_IFactory
+ * @implements TeqFw_Web_Back_Api_WAPI_IFactory
  */
 export default class TeqFw_Web_Push_Back_Service_Subscript_Save {
     constructor(spec) {
@@ -27,7 +27,7 @@ export default class TeqFw_Web_Push_Back_Service_Subscript_Save {
         this.getService = function () {
             // DEFINE INNER FUNCTIONS
             /**
-             * @param {TeqFw_Web_Back_Api_Service_Context} context
+             * @param {TeqFw_Web_Back_Api_WAPI_Context} context
              */
             async function service(context) {
                 /** @type {TeqFw_Web_Push_Shared_Service_Route_Subscript_Save.Request} */
