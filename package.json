@@ -1,6 +1,6 @@
 {
   "name": "@teqfw/web-push",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "TeqFW plugin to use Web Push API in teq-apps.",
   "keywords": [
     "ecmascript 2015",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@teqfw/user": "*",
-    "@teqfw/web": "*"
+    "web-push": "^3"
   },
   "devDependencies": {
     "@teqfw/test": "github:@teqfw/test",
