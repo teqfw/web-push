@@ -36,7 +36,7 @@ export default class TeqFw_Web_Push_Back_WAPI_Subscript_Save {
                 const res = context.getOutData();
                 const shared = context.getHandlersShare();
                 // TODO: bind it to '@teqfw/user' plugin
-                /** @type {Fl32_Teq_User_Shared_Service_Dto_User} */
+                /** @type {Fl32_Teq_User_Shared_Dto_User} */
                 const user = shared['@flancer32/teq_user/data'];
                 if (user) {
                     const trx = await rdb.startTransaction();
