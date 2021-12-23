@@ -1,19 +1,19 @@
 /**
  * Route data for service to load server key to initiate Web Push subscription.
  *
- * @namespace TeqFw_Web_Push_Shared_Service_Route_Load_ServerKey
+ * @namespace TeqFw_Web_Push_Shared_WAPI_Load_ServerKey
  */
 // MODULE'S VARS
-const NS = 'TeqFw_Web_Push_Shared_Service_Route_Load_ServerKey';
+const NS = 'TeqFw_Web_Push_Shared_WAPI_Load_ServerKey';
 
 // MODULE'S CLASSES
 /**
- * @memberOf TeqFw_Web_Push_Shared_Service_Route_Load_ServerKey
+ * @memberOf TeqFw_Web_Push_Shared_WAPI_Load_ServerKey
  */
 export class Request {}
 
 /**
- * @memberOf TeqFw_Web_Push_Shared_Service_Route_Load_ServerKey
+ * @memberOf TeqFw_Web_Push_Shared_WAPI_Load_ServerKey
  */
 export class Response {
     /** @type {string} */
@@ -22,7 +22,7 @@ export class Response {
 
 /**
  * Factory to create new DTOs.
- * @memberOf TeqFw_Web_Push_Shared_Service_Route_Load_ServerKey
+ * @memberOf TeqFw_Web_Push_Shared_WAPI_Load_ServerKey
  * @implements TeqFw_Web_Back_Api_WAPI_IRoute
  */
 export class Factory {
@@ -35,7 +35,7 @@ export class Factory {
         // DEFINE INSTANCE METHODS
         /**
          * @param {Request|Object|null} data
-         * @return {TeqFw_Web_Push_Shared_Service_Route_Load_ServerKey.Request}
+         * @return {TeqFw_Web_Push_Shared_WAPI_Load_ServerKey.Request}
          */
         this.createReq = function (data = null) {
             const res = new Request();
@@ -44,7 +44,7 @@ export class Factory {
 
         /**
          * @param {Response|Object|null} data
-         * @return {TeqFw_Web_Push_Shared_Service_Route_Load_ServerKey.Response}
+         * @return {TeqFw_Web_Push_Shared_WAPI_Load_ServerKey.Response}
          */
         this.createRes = function (data = null) {
             const res = new Response();

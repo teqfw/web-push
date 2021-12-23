@@ -1,19 +1,19 @@
 /**
  * Save user's Web Push subscription data.
  *
- * @namespace TeqFw_Web_Push_Back_Service_Subscript_Save
+ * @namespace TeqFw_Web_Push_Back_WAPI_Subscript_Save
  */
 // MODULE'S VARS
-const NS = 'TeqFw_Web_Push_Back_Service_Subscript_Save';
+const NS = 'TeqFw_Web_Push_Back_WAPI_Subscript_Save';
 
 /**
  * @implements TeqFw_Web_Back_Api_WAPI_IFactory
  */
-export default class TeqFw_Web_Push_Back_Service_Subscript_Save {
+export default class TeqFw_Web_Push_Back_WAPI_Subscript_Save {
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {TeqFw_Web_Push_Shared_Service_Route_Subscript_Save.Factory} */
-        const route = spec['TeqFw_Web_Push_Shared_Service_Route_Subscript_Save#Factory$'];
+        /** @type {TeqFw_Web_Push_Shared_WAPI_Subscript_Save.Factory} */
+        const route = spec['TeqFw_Web_Push_Shared_WAPI_Subscript_Save#Factory$'];
         /** @type {TeqFw_Db_Back_RDb_IConnect} */
         const rdb = spec['TeqFw_Db_Back_RDb_IConnect$'];
         /** @type {TeqFw_Web_Push_Back_Act_Subscript_Add.act|Function} */
@@ -30,9 +30,9 @@ export default class TeqFw_Web_Push_Back_Service_Subscript_Save {
              * @param {TeqFw_Web_Back_Api_WAPI_Context} context
              */
             async function service(context) {
-                /** @type {TeqFw_Web_Push_Shared_Service_Route_Subscript_Save.Request} */
+                /** @type {TeqFw_Web_Push_Shared_WAPI_Subscript_Save.Request} */
                 const req = context.getInData();
-                /** @type {TeqFw_Web_Push_Shared_Service_Route_Subscript_Save.Response} */
+                /** @type {TeqFw_Web_Push_Shared_WAPI_Subscript_Save.Response} */
                 const res = context.getOutData();
                 const shared = context.getHandlersShare();
                 // TODO: bind it to '@teqfw/user' plugin
