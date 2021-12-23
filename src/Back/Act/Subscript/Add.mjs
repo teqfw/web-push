@@ -9,11 +9,11 @@ const NS = 'TeqFw_Web_Push_Back_Act_Subscript_Add';
 /**
  * @memberOf TeqFw_Web_Push_Back_Act_Subscript_Add
  */
-const RESULT_CODE = {
+const RESULT = {
     DUPLICATE: 'duplicate',
     SUCCESS: 'success',
 }
-Object.freeze(RESULT_CODE);
+Object.freeze(RESULT);
 
 export default function (spec) {
     // EXTRACT DEPS
@@ -61,7 +61,7 @@ export default function (spec) {
         let code, subscriptId;
         subscriptId = await getSubscriptId(trx, userId, auth);
         if (subscriptId !== null) {
-            code = RESULT_CODE.DUPLICATE;
+            code = RESULT.DUPLICATE;
         } else {
             const data = {
                 [ATTR.USER_REF]: userId,
@@ -72,7 +72,7 @@ export default function (spec) {
             };
             const pk = await crud.create(trx, meta, data);
             subscriptId = pk[ATTR.ID];
-            code = RESULT_CODE.SUCCESS;
+            code = RESULT.SUCCESS;
 
         }
         return {code, subscriptId};
@@ -80,6 +80,10 @@ export default function (spec) {
 
     // MAIN FUNCTIONALITY
     Object.defineProperty(act, 'name', {value: `${NS}.${act.name}`});
-    act.RESULT_CODE = RESULT_CODE;
+    act.RESULT = RESULT;
     return act;
+}
+
+export {
+    RESULT
 }

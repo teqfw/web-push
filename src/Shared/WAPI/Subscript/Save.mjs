@@ -1,14 +1,14 @@
 /**
  * Route data for service to save user's Web Push subscription data.
  *
- * @namespace TeqFw_Web_Push_Shared_Service_Route_Subscript_Save
+ * @namespace TeqFw_Web_Push_Shared_WAPI_Subscript_Save
  */
 // MODULE'S VARS
-const NS = 'TeqFw_Web_Push_Shared_Service_Route_Subscript_Save';
+const NS = 'TeqFw_Web_Push_Shared_WAPI_Subscript_Save';
 
 // MODULE'S CLASSES
 /**
- * @memberOf TeqFw_Web_Push_Shared_Service_Route_Subscript_Save
+ * @memberOf TeqFw_Web_Push_Shared_WAPI_Subscript_Save
  */
 export class Request {
     /** @type {string} */
@@ -22,7 +22,7 @@ export class Request {
 }
 
 /**
- * @memberOf TeqFw_Web_Push_Shared_Service_Route_Subscript_Save
+ * @memberOf TeqFw_Web_Push_Shared_WAPI_Subscript_Save
  */
 export class Response {
     /** @type {number} */
@@ -31,8 +31,8 @@ export class Response {
 
 /**
  * Factory to create new DTOs.
- * @memberOf TeqFw_Web_Push_Shared_Service_Route_Subscript_Save
- * @implements TeqFw_Web_Back_Api_Service_IRoute
+ * @memberOf TeqFw_Web_Push_Shared_WAPI_Subscript_Save
+ * @implements TeqFw_Web_Back_Api_WAPI_IRoute
  */
 export class Factory {
     constructor(spec) {
@@ -44,7 +44,7 @@ export class Factory {
         // DEFINE INSTANCE METHODS
         /**
          * @param {Request|Object|null} data
-         * @return {TeqFw_Web_Push_Shared_Service_Route_Subscript_Save.Request}
+         * @return {TeqFw_Web_Push_Shared_WAPI_Subscript_Save.Request}
          */
         this.createReq = function (data = null) {
             const res = new Request();
@@ -57,7 +57,7 @@ export class Factory {
 
         /**
          * @param {Response|null} data
-         * @return {TeqFw_Web_Push_Shared_Service_Route_Subscript_Save.Response}
+         * @return {TeqFw_Web_Push_Shared_WAPI_Subscript_Save.Response}
          */
         this.createRes = function (data = null) {
             const res = new Response();

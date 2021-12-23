@@ -7,13 +7,14 @@
   },
   "@teqfw/core": {
     "commands": [
-      "TeqFw_Web_Push_Back_Cli_Send"
+      "TeqFw_Web_Push_Back_Cli_Send",
+      "TeqFw_Web_Push_Back_Cli_Key_Create"
     ]
   },
   "@teqfw/web": {
     "services": [
-      "TeqFw_Web_Push_Back_Service_Load_ServerKey",
-      "TeqFw_Web_Push_Back_Service_Subscript_Save"
+      "TeqFw_Web_Push_Back_WAPI_Load_ServerKey",
+      "TeqFw_Web_Push_Back_WAPI_Subscript_Save"
     ]
   }
 }

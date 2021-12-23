@@ -13,8 +13,9 @@ export default class TeqFw_Web_Push_Sw_Worker {
      * ATTN: This is standard ES6 module w/o TeqFW DI support !!!
      */
     constructor() {
-        // DEFINE WORKING VARS / PROPS
-
+        // WORKING VARS / PROPS
+        /** @type {BroadcastChannel} */
+        let _bCast;
 
         // DEFINE INNER FUNCTIONS
 
@@ -24,9 +25,10 @@ export default class TeqFw_Web_Push_Sw_Worker {
                 console.log('This push event has data: ', JSON.stringify(json));
                 const opts = {
                     body: json.body,
-                    icon: 'https://bwl.local.teqfw.com/push/img/favicon-192.png'
+                    icon: './img/favicon-192.png'
                 };
                 const promiseChain = self.registration.showNotification(json.title, opts);
+                _bCast.postMessage({name: 'playPushSound'});
                 event.waitUntil(promiseChain);
             } else {
                 console.log('This push event has no data.');
@@ -44,6 +46,9 @@ export default class TeqFw_Web_Push_Sw_Worker {
             context.addEventListener('push', onPush);
             const name = this.constructor.name;
             console.log(`Setup is complete for '${name}'.`);
+            // add sound
+            _bCast = new BroadcastChannel('teqfw-sw');
+
         }
 
         // MAIN FUNCTIONALITY
