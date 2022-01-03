@@ -27,7 +27,7 @@ export default class TeqFw_Web_Push_Back_WAPI_Subscript_Save {
         this.getService = function () {
             // DEFINE INNER FUNCTIONS
             /**
-             * @param {TeqFw_Web_Back_Handler_WAPI_Context} context
+             * @param {TeqFw_Web_Back_Server_Handler_WAPI_Context} context
              */
             async function service(context) {
                 /** @type {TeqFw_Web_Push_Shared_WAPI_Subscript_Save.Request} */
