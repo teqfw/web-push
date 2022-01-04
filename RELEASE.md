@@ -1,5 +1,10 @@
 # @teqfw/user: releases
 
+# 0.x.x
+
+* Restructure directories and files.
+*
+
 ## 0.2.0
 
 * CLI command to generate VAPID keys.
