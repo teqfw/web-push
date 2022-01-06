@@ -28,7 +28,7 @@ const ATTR = {
  * @memberOf TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript
  */
 class Dto {
-    static name = `${NS}.Dto`;
+    static namespace = `${NS}.Dto`;
     date_created;
     endpoint;
     id;
