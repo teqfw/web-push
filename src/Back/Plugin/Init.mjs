@@ -8,9 +8,16 @@ export default function Factory(spec) {
     // EXTRACT DEPS
     /** @type {TeqFw_Core_Shared_Logger} */
     const logger = spec['TeqFw_Core_Shared_Logger$'];
+    /** @type {TeqFw_Di_Shared_Container} */
+    const container = spec['TeqFw_Di_Shared_Container$'];
 
     // DEFINE INNER FUNCTIONS
-    async function action() { }
+    async function action() {
+        // TODO: just create processes
+        // run initialization synchronously to prevent doubling of singletons
+        await container.get('TeqFw_Web_Push_Back_Proc_Key_Load$');
+
+    }
 
     // MAIN FUNCTIONALITY
     Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});
