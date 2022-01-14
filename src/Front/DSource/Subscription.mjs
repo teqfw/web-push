@@ -14,6 +14,11 @@ export default class TeqFw_Web_Push_Front_DSource_Subscription {
         let _cache;
 
         // INSTANCE METHODS
+        this.clean = async () => {
+            _cache = undefined;
+            await store.delete(STORE_KEY);
+        }
+
         /**
          * Get user data from IDB or generate new one and sae to IDB.
          * @return {Promise<TeqFw_Web_Push_Shared_Dto_Subscription.Dto>}
