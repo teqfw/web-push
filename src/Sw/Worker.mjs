@@ -13,16 +13,18 @@ export default class TeqFw_Web_Push_Sw_Worker {
      * ATTN: This is standard ES6 module w/o TeqFW DI support !!!
      */
     constructor() {
-        // WORKING VARS / PROPS
+        // ENCLOSED VARS
         /** @type {BroadcastChannel} */
         let _bCast;
+        /** @type {function} */
+        let _log;
 
-        // DEFINE INNER FUNCTIONS
+        // ENCLOSED FUNCTIONS
 
         function onPush(event) {
             if (event.data) {
                 const json = event.data.json();
-                console.log('This push event has data: ', JSON.stringify(json));
+                _log('[TeqFw_Web_Push_Sw_Worker]: This push event has data: ', JSON.stringify(json));
                 const opts = {
                     body: json.body,
                     icon: './img/favicon-192.png'
@@ -31,11 +33,11 @@ export default class TeqFw_Web_Push_Sw_Worker {
                 _bCast.postMessage({name: 'playPushSound'});
                 event.waitUntil(promiseChain);
             } else {
-                console.log('This push event has no data.');
+                _log('[TeqFw_Web_Push_Sw_Worker]: This push event has no data.');
             }
         }
 
-        // DEFINE INSTANCE METHODS
+        // INSTANCE METHODS
 
         /**
          * Bind event handlers to worker's scope.
@@ -43,15 +45,13 @@ export default class TeqFw_Web_Push_Sw_Worker {
          * @param {string} door entry point for the front of application
          */
         this.setup = function (context, door) {
+            _log = context.logToServer; // pin remote log function to current module
             context.addEventListener('push', onPush);
             const name = this.constructor.name;
-            console.log(`Setup is complete for '${name}'.`);
+            _log(`[TeqFw_Web_Push_Sw_Worker]: Setup is complete for '${name}'.`);
             // add sound
             _bCast = new BroadcastChannel('teqfw-sw');
-
         }
-
-        // MAIN FUNCTIONALITY
     }
 
 }
