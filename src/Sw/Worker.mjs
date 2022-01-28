@@ -5,8 +5,6 @@
  *
  * I suppose that SW files should be cached by browser itself, so these files are not under `./Front/` folder.
  */
-
-
 export default class TeqFw_Web_Push_Sw_Worker {
 
     /**
@@ -14,8 +12,6 @@ export default class TeqFw_Web_Push_Sw_Worker {
      */
     constructor() {
         // ENCLOSED VARS
-        /** @type {BroadcastChannel} */
-        let _bCast;
         /** @type {function} */
         let _log;
 
@@ -30,7 +26,6 @@ export default class TeqFw_Web_Push_Sw_Worker {
                     icon: './img/favicon-192.png'
                 };
                 const promiseChain = self.registration.showNotification(json.title, opts);
-                _bCast.postMessage({name: 'playPushSound'});
                 event.waitUntil(promiseChain);
             } else {
                 _log('[TeqFw_Web_Push_Sw_Worker]: This push event has no data.');
@@ -46,11 +41,9 @@ export default class TeqFw_Web_Push_Sw_Worker {
          */
         this.setup = function (context, door) {
             _log = context.logToServer; // pin remote log function to current module
-            context.addEventListener('push', onPush);
+            context.addEventListener('push', onPush); // Safari browser has no 'push' event
             const name = this.constructor.name;
             _log(`[TeqFw_Web_Push_Sw_Worker]: Setup is complete for '${name}'.`);
-            // add sound
-            _bCast = new BroadcastChannel('teqfw-sw');
         }
     }
 
