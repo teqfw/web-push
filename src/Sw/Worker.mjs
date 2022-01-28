@@ -4,6 +4,8 @@
  * This is standard ES6 module w/o TeqFW DI support (service workers don't allow dynamic `import()`).
  *
  * I suppose that SW files should be cached by browser itself, so these files are not under `./Front/` folder.
+ *
+ * TODO: this code should be on app level, not on framework level
  */
 export default class TeqFw_Web_Push_Sw_Worker {
 
