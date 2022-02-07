@@ -35,7 +35,7 @@ export default class TeqFw_Web_Push_Back_WAPI_Subscript_Save {
                 /** @type {TeqFw_Web_Push_Shared_WAPI_Subscript_Save.Response} */
                 const res = context.getOutData();
                 const shared = context.getHandlersShare();
-                // TODO: bind it to '@teqfw/user' plugin
+                // TODO: bind it to '@teqfw/web' plugin
                 /** @type {Fl32_Teq_User_Shared_Dto_User} */
                 const user = shared['@flancer32/teq_user/data'];
                 if (user) {
@@ -59,7 +59,7 @@ export default class TeqFw_Web_Push_Back_WAPI_Subscript_Save {
                     } catch (e) {
                         console.log(e);
                         await trx.rollback();
-                        throw error;
+                        throw e;
                     }
                 }
             }
