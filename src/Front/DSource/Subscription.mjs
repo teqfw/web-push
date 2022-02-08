@@ -1,5 +1,6 @@
 /**
  * DataSource for user subscription data (Web Push API) stored in IDB.
+ * @deprecated use TeqFw_Web_Push_Front_Mod_Subscription
  */
 export default class TeqFw_Web_Push_Front_DSource_Subscription {
     constructor(spec) {
