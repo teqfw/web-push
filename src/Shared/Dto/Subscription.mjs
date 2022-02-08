@@ -11,6 +11,7 @@ const NS = 'TeqFw_Web_Push_Shared_Dto_Subscription';
 const ATTR = {
     ENDPOINT: 'endpoint',
     EXPIRATION_TIME: 'expirationTime',
+    FRONT_ID: 'frontId',
     KEYS: 'keys',
 };
 
@@ -24,6 +25,8 @@ class Dto {
     expirationTime;
     /** @type {string} */
     endpoint;
+    /** @type {number} */
+    frontId;
     /** @type {TeqFw_Web_Push_Shared_Dto_Subscription_Keys.Dto} */
     keys;
 }
@@ -36,6 +39,8 @@ export default class TeqFw_Web_Push_Shared_Dto_Subscription {
     constructor(spec) {
         /** @type {TeqFw_Core_Shared_Util_Cast.castDate|function} */
         const castDate = spec['TeqFw_Core_Shared_Util_Cast.castDate'];
+        /** @type {TeqFw_Core_Shared_Util_Cast.castInt|function} */
+        const castInt = spec['TeqFw_Core_Shared_Util_Cast.castInt'];
         /** @type {TeqFw_Core_Shared_Util_Cast.castString|function} */
         const castString = spec['TeqFw_Core_Shared_Util_Cast.castString'];
         /** @type {TeqFw_Web_Push_Shared_Dto_Subscription_Keys} */
@@ -50,6 +55,7 @@ export default class TeqFw_Web_Push_Shared_Dto_Subscription {
             const res = new Dto();
             res.expirationTime = castDate(data?.expirationTime);
             res.endpoint = castString(data?.endpoint);
+            res.frontId = castInt(data?.frontId);
             res.keys = dtoKeys.createDto(data?.keys);
             return res;
         }

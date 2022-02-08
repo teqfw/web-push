@@ -16,6 +16,7 @@ export default function Factory(spec) {
         // TODO: just create processes
         // run initialization synchronously to prevent doubling of singletons
         await container.get('TeqFw_Web_Push_Back_Proc_Key_Load$');
+        await container.get('TeqFw_Web_Push_Back_Proc_Subscript_Save$');
 
     }
 

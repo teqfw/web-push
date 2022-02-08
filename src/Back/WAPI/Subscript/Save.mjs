@@ -2,6 +2,7 @@
  * Save user's Web Push subscription data.
  *
  * @namespace TeqFw_Web_Push_Back_WAPI_Subscript_Save
+ * @deprecated use TeqFw_Web_Push_Back_Proc_Subscript_Save
  */
 // MODULE'S VARS
 const NS = 'TeqFw_Web_Push_Back_WAPI_Subscript_Save';

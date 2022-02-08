@@ -82,7 +82,7 @@ describe('Act_Subscript', function () {
             assert(Array.isArray(items));
             /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Dto} */
             const first = items[0];
-            assert(first.user_ref === USER1_ID);
+            assert(first.front_ref === USER1_ID);
             await trx.commit();
         } catch (e) {
             await trx.rollback();

@@ -8,7 +8,11 @@ export default class TeqFw_Web_Push_Shared_Defaults {
     WEB_LOAD_SERVER_KEY = '/load/server_key';
     WEB_SUBSCRIPTION_SAVE = '/subscription/save';
 
-    constructor() {
+    /** @type {TeqFw_Web_Shared_Defaults} */
+    MOD_WEB;
+
+    constructor(spec) {
+        this.MOD_WEB = spec['TeqFw_Web_Shared_Defaults$'];
         Object.freeze(this);
     }
 }

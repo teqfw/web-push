@@ -20,7 +20,7 @@ const ATTR = {
     ID: 'id',
     KEY_AUTH: 'key_auth',
     KEY_P256DH: 'key_p256dh',
-    USER_REF: 'user_ref',
+    FRONT_REF: 'front_ref',
 };
 
 // MODULE'S CLASSES
@@ -34,7 +34,7 @@ class Dto {
     id;
     key_auth;
     key_p256dh;
-    user_ref;
+    front_ref;
 }
 
 // noinspection JSClosureCompilerSyntax
@@ -51,7 +51,7 @@ export default class TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript {
         return base.create(this,
             `${DEF.SHARED.NAME}${ENTITY}`,
             ATTR,
-            [ATTR.ID],
+            [ATTR.FRONT_REF],
             Dto
         );
     }

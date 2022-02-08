@@ -25,7 +25,7 @@ export default function (spec) {
      * @memberOf TeqFw_Web_Push_Back_Act_Subscript_GetByUserId
      */
     async function act({trx, userId}) {
-        const where = {[ATTR.USER_REF]: userId};
+        const where = {[ATTR.FRONT_REF]: userId};
         const items = await crud.readSet(trx, meta, where);
         return {items};
     }
