@@ -41,7 +41,7 @@ export default class TeqFw_Web_Push_Back_Proc_Subscript_Save {
             const trx = await rdb.startTransaction();
             try {
                 // get frontId by UUID
-                // TODO: use TeqFw_Web_Back_Act_Front_GetIdByUUID
+                // TODO: use TeqFw_Web_Back_Act_Front_GetIdByUuid
                 /** @type {TeqFw_Web_Back_Store_RDb_Schema_Front.Dto} */
                 const found = await crud.readOne(trx, rdbFront, {[A_FRONT.UUID]: frontUUID});
                 const frontId = found ? found.id : null;
