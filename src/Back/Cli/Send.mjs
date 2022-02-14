@@ -24,8 +24,8 @@ export default function Factory(spec) {
     // EXTRACT DEPS
     /** @type {TeqFw_Web_Push_Back_Defaults} */
     const DEF = spec['TeqFw_Web_Push_Back_Defaults$'];
-    /** @type {TeqFw_Core_Shared_Logger} */
-    const logger = spec['TeqFw_Core_Shared_Logger$'];
+    /** @type {TeqFw_Core_Shared_Api_ILogger} */
+    const logger = spec['TeqFw_Core_Shared_Api_ILogger$'];
     /** @type {TeqFw_Db_Back_RDb_IConnect} */
     const connector = spec['TeqFw_Db_Back_RDb_IConnect$'];
     /** @type {TeqFw_Core_Back_Api_Dto_Command.Factory} */
@@ -47,8 +47,8 @@ export default function Factory(spec) {
         const body = opts[OPT_BODY];
         const title = opts[OPT_TITLE];
         const userId = opts[OPT_USER];
-        logger.reset();
-        logger.pause(false);
+        // logger.reset();
+        // logger.pause(false);
         logger.info(`Push message "${body}" to user #${userId}.`);
         const trx = await connector.startTransaction();
         try {
