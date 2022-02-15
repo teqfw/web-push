@@ -7,7 +7,7 @@ const NS = 'TeqFw_Web_Push_Back_Plugin_Init';
 export default function Factory(spec) {
     // DEPS
     /** @type {TeqFw_Core_Shared_Api_ILogger} */
-    const logger = spec['TeqFw_Core_Shared_Api_ILogger$'];
+    const logger = spec['TeqFw_Core_Shared_Api_ILogger$$']; // instance
     /** @type {TeqFw_Di_Shared_Container} */
     const container = spec['TeqFw_Di_Shared_Container$'];
 
