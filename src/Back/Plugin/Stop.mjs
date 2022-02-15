@@ -5,7 +5,7 @@
 const NS = 'TeqFw_Web_Push_Back_Plugin_Stop';
 
 export default function Factory(spec) {
-    // EXTRACT DEPS
+    // DEPS
 
     // COMPOSE RESULT
     async function action() { }

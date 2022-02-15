@@ -16,7 +16,7 @@ const RESULT = {
 Object.freeze(RESULT);
 
 export default function (spec) {
-    // EXTRACT DEPS
+    // DEPS
     /** @type {TeqFw_Db_Back_RDb_Meta_IEntity|TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
     const rdbSubscript = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$'];
     /** @type {TeqFw_Db_Back_Api_RDb_ICrudEngine} */
@@ -27,7 +27,7 @@ export default function (spec) {
     const ATTR = rdbSubscript.getAttributes();
 
 
-    // DEFINE INNER FUNCTIONS
+    // ENCLOSED FUNCS
     /**
      * @param {TeqFw_Db_Back_RDb_ITrans} trx
      * @param {number} frontId
@@ -61,7 +61,7 @@ export default function (spec) {
         return {code};
     }
 
-    // MAIN FUNCTIONALITY
+    // MAIN
     Object.defineProperty(act, 'name', {value: `${NS}.${act.name}`});
     act.RESULT = RESULT;
     return act;

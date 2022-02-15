@@ -21,7 +21,7 @@ const NS = 'TeqFw_Web_Push_Back_Cli_Key_Create';
  * @memberOf TeqFw_Web_Push_Back_Cli_Key_Create
  */
 export default function Factory(spec) {
-    // EXTRACT DEPS
+    // DEPS
     /** @type {TeqFw_Web_Push_Back_Defaults} */
     const DEF = spec['TeqFw_Web_Push_Back_Defaults$'];
     /** @type {TeqFw_Core_Back_Config} */
@@ -32,14 +32,14 @@ export default function Factory(spec) {
     const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$'];
 
 
-    // DEFINE INNER FUNCTIONS
+    // ENCLOSED FUNCS
     /**
      * Command action.
      * @returns {Promise<void>}
      * @memberOf TeqFw_Web_Push_Back_Cli_Key_Create
      */
     async function action() {
-        // DEFINE INNER FUNCTIONS
+        // ENCLOSED FUNCS
         async function keyExists(path) {
             if (existsSync(path)) {
                 logger.error(`There is VAPID keys for the application in '${path}'`);
@@ -48,7 +48,7 @@ export default function Factory(spec) {
             return false;
         }
 
-        // MAIN FUNCTIONALITY
+        // MAIN
         logger.reset(false);
         try {
             const root = config.getBoot().projectRoot;

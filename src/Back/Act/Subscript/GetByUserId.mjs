@@ -7,7 +7,7 @@
 const NS = 'TeqFw_Web_Push_Back_Act_Subscript_GetByUserId';
 
 export default function (spec) {
-    // EXTRACT DEPS
+    // DEPS
     /** @type {TeqFw_Db_Back_RDb_Meta_IEntity|TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
     const meta = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$'];
     /** @type {TeqFw_Db_Back_Api_RDb_ICrudEngine} */
@@ -17,7 +17,7 @@ export default function (spec) {
     /** @type {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.ATTR} */
     const ATTR = meta.getAttributes();
 
-    // DEFINE INNER FUNCTIONS
+    // ENCLOSED FUNCS
     /**
      * @param trx
      * @param {number} userId
@@ -30,7 +30,7 @@ export default function (spec) {
         return {items};
     }
 
-    // MAIN FUNCTIONALITY
+    // MAIN
     Object.defineProperty(act, 'name', {value: `${NS}.${act.name}`});
     return act;
 }

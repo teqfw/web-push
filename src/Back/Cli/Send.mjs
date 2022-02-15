@@ -21,7 +21,7 @@ const OPT_USER = 'user';
  * @memberOf TeqFw_Web_Push_Back_Cli_Send
  */
 export default function Factory(spec) {
-    // EXTRACT DEPS
+    // DEPS
     /** @type {TeqFw_Web_Push_Back_Defaults} */
     const DEF = spec['TeqFw_Web_Push_Back_Defaults$'];
     /** @type {TeqFw_Core_Shared_Api_ILogger} */
@@ -37,7 +37,7 @@ export default function Factory(spec) {
     /** @type {TeqFw_Web_Push_Back_Act_Subscript_SendMsg|Function} */
     const actSendMsg = spec['TeqFw_Web_Push_Back_Act_Subscript_SendMsg$'];
 
-    // DEFINE INNER FUNCTIONS
+    // ENCLOSED FUNCS
     /**
      * Command action.
      * @returns {Promise<void>}

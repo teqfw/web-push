@@ -7,7 +7,7 @@
  */
 export default class TeqFw_Web_Push_Front_Mod_Subscription {
     constructor(spec) {
-        // EXTRACT DEPS
+        // DEPS
         /** @type {TeqFw_Web_Push_Front_Defaults} */
         const DEF = spec['TeqFw_Web_Push_Front_Defaults$'];
         /** @type {TeqFw_Web_Front_App_Logger} */

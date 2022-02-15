@@ -5,13 +5,13 @@
 const NS = 'TeqFw_Web_Push_Back_Plugin_Init';
 
 export default function Factory(spec) {
-    // EXTRACT DEPS
+    // DEPS
     /** @type {TeqFw_Core_Shared_Api_ILogger} */
     const logger = spec['TeqFw_Core_Shared_Api_ILogger$'];
     /** @type {TeqFw_Di_Shared_Container} */
     const container = spec['TeqFw_Di_Shared_Container$'];
 
-    // DEFINE INNER FUNCTIONS
+    // ENCLOSED FUNCS
     async function action() {
         // TODO: just create processes
         // run initialization synchronously to prevent doubling of singletons
@@ -20,7 +20,7 @@ export default function Factory(spec) {
 
     }
 
-    // MAIN FUNCTIONALITY
+    // MAIN
     Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});
     return action;
 }

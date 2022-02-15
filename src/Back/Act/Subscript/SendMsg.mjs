@@ -19,7 +19,7 @@ const RESULT_CODE = {
 Object.freeze(RESULT_CODE);
 
 export default function (spec) {
-    // EXTRACT DEPS
+    // DEPS
     /** @type {TeqFw_Web_Push_Back_Defaults} */
     const DEF = spec['TeqFw_Web_Push_Back_Defaults$'];
     /** @type {TeqFw_Core_Back_Config} */
@@ -27,7 +27,7 @@ export default function (spec) {
     /** @type {TeqFw_Web_Push_Back_Act_Subscript_LoadKeys.act|function} */
     const actLoadKeys = spec['TeqFw_Web_Push_Back_Act_Subscript_LoadKeys$'];
 
-    // WORKING VARS / PROPS
+    // ENCLOSED VARS
     /** @type {TeqFw_Web_Push_Back_Api_Dto_Config_Local} */
     const cfgLocal = config.getLocal(DEF.SHARED.NAME);
     const email = `mailto:${cfgLocal?.email}`;
@@ -45,9 +45,9 @@ export default function (spec) {
      * @memberOf TeqFw_Web_Push_Back_Act_Subscript_SendMsg
      */
     async function act({title, body, endpoint, auth, p256dh}) {
-        // DEFINE INNER FUNCTIONS
+        // ENCLOSED FUNCS
 
-        // MAIN FUNCTIONALITY
+        // MAIN
         let res;
         try {
             webPush.setVapidDetails(
@@ -64,7 +64,7 @@ export default function (spec) {
         return res;
     }
 
-    // MAIN FUNCTIONALITY
+    // MAIN
 
 
     Object.defineProperty(act, 'name', {value: `${NS}.${act.name}`});

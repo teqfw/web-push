@@ -12,7 +12,7 @@ import webPush from "web-push";
 const NS = 'TeqFw_Web_Push_Back_Act_Subscript_LoadKeys';
 
 export default function (spec) {
-    // EXTRACT DEPS
+    // DEPS
     /** @type {TeqFw_Web_Push_Back_Defaults} */
     const DEF = spec['TeqFw_Web_Push_Back_Defaults$'];
     /** @type {TeqFw_Core_Back_Config} */
@@ -20,7 +20,7 @@ export default function (spec) {
     /** @type {TeqFw_Core_Back_Util.readJson|function} */
     const readJson = spec['TeqFw_Core_Back_Util.readJson'];
 
-    // DEFINE INNER FUNCTIONS
+    // ENCLOSED FUNCS
     /**
      * @return {{publicKey: string, privateKey: string}}
      * @memberOf TeqFw_Web_Push_Back_Act_Subscript_LoadKeys
@@ -39,7 +39,7 @@ export default function (spec) {
         }
     }
 
-    // MAIN FUNCTIONALITY
+    // MAIN
     Object.defineProperty(act, 'name', {value: `${NS}.${act.name}`});
     return act;
 }

@@ -11,10 +11,10 @@ export default class TeqFw_Web_Push_Back_Defaults {
     SHARED;
 
     constructor(spec) {
-        // EXTRACT DEPS
+        // DEPS
         this.SHARED = spec['TeqFw_Web_Push_Shared_Defaults$'];
 
-        // MAIN FUNCTIONALITY
+        // MAIN
         Object.freeze(this);
     }
 }
