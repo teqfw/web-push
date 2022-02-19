@@ -10,8 +10,8 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
         // DEPS
         /** @type {TeqFw_Web_Push_Front_Defaults} */
         const DEF = spec['TeqFw_Web_Push_Front_Defaults$'];
-        /** @type {TeqFw_Web_Front_App_Logger} */
-        const logger = spec['TeqFw_Web_Front_App_Logger$'];
+        /** @type {TeqFw_Core_Shared_Api_ILogger} */
+        const logger = spec['TeqFw_Core_Shared_Api_ILogger$$']; // instance
         /** @type {TeqFw_Web_Front_App_Event_Bus} */
         const eventsFront = spec['TeqFw_Web_Front_App_Event_Bus$'];
         /** @type {TeqFw_Web_Front_App_Connect_Event_Direct_Portal} */
@@ -32,6 +32,8 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
         // ENCLOSED VARS
         const STORE_KEY = `${DEF.SHARED.NAME}/front/subscription`;
         let _cache;
+        // MAIN
+        logger.setNamespace(this.constructor.name);
 
         // INSTANCE METHODS
         /**
