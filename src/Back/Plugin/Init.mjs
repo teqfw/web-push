@@ -11,7 +11,7 @@ export default function Factory(spec) {
     /** @type {TeqFw_Di_Shared_Container} */
     const container = spec['TeqFw_Di_Shared_Container$'];
 
-    // ENCLOSED FUNCS
+    // FUNCS
     async function action() {
         // TODO: just create processes
         // run initialization synchronously to prevent doubling of singletons

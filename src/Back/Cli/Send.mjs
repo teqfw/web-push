@@ -37,7 +37,7 @@ export default function Factory(spec) {
     /** @type {TeqFw_Web_Push_Back_Act_Subscript_SendMsg|Function} */
     const actSendMsg = spec['TeqFw_Web_Push_Back_Act_Subscript_SendMsg$'];
 
-    // ENCLOSED FUNCS
+    // FUNCS
     /**
      * Command action.
      * @returns {Promise<void>}

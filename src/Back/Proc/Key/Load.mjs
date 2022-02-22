@@ -17,13 +17,13 @@ export default class TeqFw_Web_Push_Back_Proc_Key_Load {
         /** @type {TeqFw_Web_Push_Back_Act_Subscript_LoadKeys.act|function} */
         const actLoad = spec['TeqFw_Web_Push_Back_Act_Subscript_LoadKeys$'];
 
-        // ENCLOSED VARS
+        // VARS
         let _cache;
 
         // MAIN
         eventsBack.subscribe(esfReq.getEventName(), handler)
 
-        // ENCLOSED FUNCTIONS
+        // FUNCS
         /**
          * @param {TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request.Dto} data
          * @param {TeqFw_Web_Shared_App_Event_Trans_Message_Meta.Dto} meta

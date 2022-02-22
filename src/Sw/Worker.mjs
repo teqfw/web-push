@@ -13,11 +13,11 @@ export default class TeqFw_Web_Push_Sw_Worker {
      * ATTN: This is standard ES6 module w/o TeqFW DI support !!!
      */
     constructor() {
-        // ENCLOSED VARS
+        // VARS
         /** @type {function} */
         let _log;
 
-        // ENCLOSED FUNCTIONS
+        // FUNCS
 
         function onPush(event) {
             if (event.data) {

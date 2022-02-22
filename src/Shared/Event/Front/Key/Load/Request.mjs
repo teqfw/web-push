@@ -21,10 +21,10 @@ export default class TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request {
         /** @type {TeqFw_Web_Shared_App_Event_Trans_Message} */
         const dtoBase = spec['TeqFw_Web_Shared_App_Event_Trans_Message$'];
 
-        // ENCLOSED VARS
+        // VARS
         const ATTR = dtoBase.getAttributes();
 
-        // ENCLOSED FUNCTIONS
+        // FUNCS
         /**
          * @param {TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request.Dto} [data]
          * @return {TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request.Dto}

@@ -27,7 +27,7 @@ export default function (spec) {
     /** @type {TeqFw_Web_Push_Back_Act_Subscript_LoadKeys.act|function} */
     const actLoadKeys = spec['TeqFw_Web_Push_Back_Act_Subscript_LoadKeys$'];
 
-    // ENCLOSED VARS
+    // VARS
     /** @type {TeqFw_Web_Push_Back_Api_Dto_Config_Local} */
     const cfgLocal = config.getLocal(DEF.SHARED.NAME);
     const email = `mailto:${cfgLocal?.email}`;
@@ -45,7 +45,7 @@ export default function (spec) {
      * @memberOf TeqFw_Web_Push_Back_Act_Subscript_SendMsg
      */
     async function act({title, body, endpoint, auth, p256dh}) {
-        // ENCLOSED FUNCS
+        // FUNCS
 
         // MAIN
         let res;

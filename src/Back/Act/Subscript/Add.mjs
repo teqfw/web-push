@@ -27,7 +27,7 @@ export default function (spec) {
     const ATTR = rdbSubscript.getAttributes();
 
 
-    // ENCLOSED FUNCS
+    // FUNCS
     /**
      * @param {TeqFw_Db_Back_RDb_ITrans} trx
      * @param {number} frontId

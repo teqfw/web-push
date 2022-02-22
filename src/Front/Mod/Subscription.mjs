@@ -29,7 +29,7 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
         /** @type {TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response} */
         const esbSaveRes = spec['TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response$'];
 
-        // ENCLOSED VARS
+        // VARS
         const STORE_KEY = `${DEF.SHARED.NAME}/front/subscription`;
         let _cache;
         // MAIN
@@ -69,17 +69,17 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
          * @return {Promise<boolean>} 'true' if subscription is succeeded
          */
         this.subscribe = async () => {
-            // ENCLOSED FUNCTIONS
+            // FUNCS
             /**
              * Load public server key for asymmetric encryption.
              * @return {Promise<string|null>}
              */
             async function loadServerKey() {
                 return new Promise((resolve) => {
-                    // ENCLOSED VARS
+                    // VARS
                     let idFail, sub;
 
-                    // ENCLOSED FUNCTIONS
+                    // FUNCS
                     /**
                      * @param {TeqFw_Web_Push_Shared_Event_Back_Key_Load_Response.Dto} data
                      */
@@ -108,10 +108,10 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
              */
             async function saveSubscription(data) {
                 return new Promise((resolve) => {
-                    // ENCLOSED VARS
+                    // VARS
                     let idFail, sub;
 
-                    // ENCLOSED FUNCS
+                    // FUNCS
                     /**
                      * @param {TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response.Dto} data
                      */

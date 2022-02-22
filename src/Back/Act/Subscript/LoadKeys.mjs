@@ -20,7 +20,7 @@ export default function (spec) {
     /** @type {TeqFw_Core_Back_Util.readJson|function} */
     const readJson = spec['TeqFw_Core_Back_Util.readJson'];
 
-    // ENCLOSED FUNCS
+    // FUNCS
     /**
      * @return {{publicKey: string, privateKey: string}}
      * @memberOf TeqFw_Web_Push_Back_Act_Subscript_LoadKeys

@@ -23,14 +23,14 @@ export default class TeqFw_Web_Push_Back_Proc_Subscript_Save {
         /** @type {TeqFw_Web_Push_Back_Act_Subscript_Add.act|Function} */
         const actAdd = spec['TeqFw_Web_Push_Back_Act_Subscript_Add$'];
 
-        // ENCLOSED VARS
+        // VARS
         /** @type {typeof TeqFw_Web_Back_Store_RDb_Schema_Front.ATTR} */
         const A_FRONT = rdbFront.getAttributes();
 
         // MAIN
         eventsBack.subscribe(esfReq.getEventName(), handler)
 
-        // ENCLOSED FUNCTIONS
+        // FUNCS
         /**
          * @param {TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request.Dto} data
          * @param {TeqFw_Web_Shared_App_Event_Trans_Message_Meta.Dto} meta

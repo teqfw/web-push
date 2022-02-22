@@ -25,10 +25,10 @@ export default class TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request {
         /** @type {TeqFw_Web_Push_Shared_Dto_Subscription} */
         const dtoSubscript = spec['TeqFw_Web_Push_Shared_Dto_Subscription$'];
 
-        // ENCLOSED VARS
+        // VARS
         const ATTR = dtoBase.getAttributes();
 
-        // ENCLOSED FUNCTIONS
+        // FUNCS
         /**
          * @param {TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request.Dto} [data]
          * @return {TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request.Dto}

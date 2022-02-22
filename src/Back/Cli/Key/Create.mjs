@@ -32,14 +32,14 @@ export default function Factory(spec) {
     const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$'];
 
 
-    // ENCLOSED FUNCS
+    // FUNCS
     /**
      * Command action.
      * @returns {Promise<void>}
      * @memberOf TeqFw_Web_Push_Back_Cli_Key_Create
      */
     async function action() {
-        // ENCLOSED FUNCS
+        // FUNCS
         async function keyExists(path) {
             if (existsSync(path)) {
                 logger.error(`There is VAPID keys for the application in '${path}'`);

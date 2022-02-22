@@ -17,7 +17,7 @@ export default function (spec) {
     /** @type {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.ATTR} */
     const ATTR = meta.getAttributes();
 
-    // ENCLOSED FUNCS
+    // FUNCS
     /**
      * @param trx
      * @param {number} userId
