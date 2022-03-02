@@ -9,6 +9,7 @@
               "comment": "Front apps subscriptions.",
               "attr": {
                 "front_ref": {"type": "ref"},
+                "enabled": {"type": "boolean"},
                 "date_created": {
                   "comment": "Date-time for subscription registration.",
                   "type": "datetime",

@@ -27,14 +27,14 @@ export default function Factory(spec) {
     /** @type {TeqFw_Core_Shared_Api_ILogger} */
     const logger = spec['TeqFw_Core_Shared_Api_ILogger$$']; // instance
     /** @type {TeqFw_Db_Back_RDb_IConnect} */
-    const connector = spec['TeqFw_Db_Back_RDb_IConnect$'];
+    const rdb = spec['TeqFw_Db_Back_RDb_IConnect$'];
     /** @type {TeqFw_Core_Back_Api_Dto_Command.Factory} */
     const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$'];
     /** @type {TeqFw_Core_Back_Api_Dto_Command_Option.Factory} */
     const fOpt = spec['TeqFw_Core_Back_Api_Dto_Command_Option#Factory$'];
-    /** @type {TeqFw_Web_Push_Back_Act_Subscript_GetByUserId|Function} */
-    const actGetByUser = spec['TeqFw_Web_Push_Back_Act_Subscript_GetByUserId$'];
-    /** @type {TeqFw_Web_Push_Back_Act_Subscript_SendMsg|Function} */
+    /** @type {TeqFw_Web_Push_Back_Act_Subscript_GetByFrontId.act|function} */
+    const actGetSubscript = spec['TeqFw_Web_Push_Back_Act_Subscript_GetByFrontId$'];
+    /** @type {TeqFw_Web_Push_Back_Act_Subscript_SendMsg.act|function} */
     const actSendMsg = spec['TeqFw_Web_Push_Back_Act_Subscript_SendMsg$'];
 
     // FUNCS
@@ -50,10 +50,10 @@ export default function Factory(spec) {
         // logger.reset();
         // logger.pause(false);
         logger.info(`Push message "${body}" to user #${userId}.`);
-        const trx = await connector.startTransaction();
+        const trx = await rdb.startTransaction();
         try {
             /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript[]} */
-            const {items} = await actGetByUser({trx, userId});
+            const {items} = await actGetSubscript({trx, frontId: userId});
             for (const item of items) {
                 const endpoint = item.endpoint;
                 const auth = item.key_auth;
@@ -66,7 +66,7 @@ export default function Factory(spec) {
             trx.rollback();
             logger.error(`${e.toString()}`);
         }
-        await connector.disconnect();
+        await rdb.disconnect();
     }
 
     Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});

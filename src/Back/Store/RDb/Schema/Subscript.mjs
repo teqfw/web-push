@@ -16,11 +16,12 @@ const ENTITY = '/web/push/subscript';
  */
 const ATTR = {
     DATE_CREATED: 'date_created',
+    ENABLED: 'enabled',
     ENDPOINT: 'endpoint',
+    FRONT_REF: 'front_ref',
     ID: 'id',
     KEY_AUTH: 'key_auth',
     KEY_P256DH: 'key_p256dh',
-    FRONT_REF: 'front_ref',
 };
 
 // MODULE'S CLASSES
@@ -30,11 +31,12 @@ const ATTR = {
 class Dto {
     static namespace = NS;
     date_created;
+    enabled;
     endpoint;
+    front_ref;
     id;
     key_auth;
     key_p256dh;
-    front_ref;
 }
 
 // noinspection JSClosureCompilerSyntax

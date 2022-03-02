@@ -17,8 +17,8 @@ const meta = await container.get('TeqFw_User_Back_Store_RDb_Schema_User$');
 
 /** @type {TeqFw_Web_Push_Back_Act_Subscript_Add.act|Function} */
 const actAdd = await container.get('TeqFw_Web_Push_Back_Act_Subscript_Add$');
-/** @type {TeqFw_Web_Push_Back_Act_Subscript_GetByUserId.act|Function} */
-const actGet = await container.get('TeqFw_Web_Push_Back_Act_Subscript_GetByUserId$');
+/** @type {TeqFw_Web_Push_Back_Act_Subscript_GetByFrontId.act|Function} */
+const actGet = await container.get('TeqFw_Web_Push_Back_Act_Subscript_GetByFrontId$');
 
 // prepare this unit runtime objects
 /** @type {typeof TeqFw_User_Back_Store_RDb_Schema_User.ATTR} */
@@ -78,7 +78,7 @@ describe('Act_Subscript', function () {
         const trx = await conn.startTransaction();
         try {
             const userId = USER1_ID;
-            const {items} = await actGet({trx, userId});
+            const {items} = await actGet({trx, frontId: userId});
             assert(Array.isArray(items));
             /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Dto} */
             const first = items[0];

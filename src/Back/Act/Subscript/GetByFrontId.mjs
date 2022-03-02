@@ -1,10 +1,11 @@
 /**
- * Get all subscriptions by user ID.
+ * Get all subscriptions by front ID.
  *
- * @namespace TeqFw_Web_Push_Back_Act_Subscript_GetByUserId
+ * @namespace TeqFw_Web_Push_Back_Act_Subscript_GetByFrontId
+ * @deprecated use CRUD readOne()
  */
 // MODULE'S VARS
-const NS = 'TeqFw_Web_Push_Back_Act_Subscript_GetByUserId';
+const NS = 'TeqFw_Web_Push_Back_Act_Subscript_GetByFrontId';
 
 export default function (spec) {
     // DEPS
@@ -20,12 +21,13 @@ export default function (spec) {
     // FUNCS
     /**
      * @param trx
-     * @param {number} userId
+     * @param {number} frontId
      * @return {Promise<{items: TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript[]}>}
-     * @memberOf TeqFw_Web_Push_Back_Act_Subscript_GetByUserId
+     * @memberOf TeqFw_Web_Push_Back_Act_Subscript_GetByFrontId
+     * @deprecated use CRUD readOne()
      */
-    async function act({trx, userId}) {
-        const where = {[ATTR.FRONT_REF]: userId};
+    async function act({trx, frontId}) {
+        const where = {[ATTR.FRONT_REF]: frontId};
         const items = await crud.readSet(trx, meta, where);
         return {items};
     }
