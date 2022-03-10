@@ -8,8 +8,8 @@
 // DEFINE WORKING VARS
 const NS = 'TeqFw_Web_Push_Back_Cli_Send';
 const OPT_BODY = 'body';
+const OPT_FRONT = 'front';
 const OPT_TITLE = 'title';
-const OPT_USER = 'user';
 
 // DEFINE MODULE'S FUNCTIONS
 /**
@@ -32,8 +32,6 @@ export default function Factory(spec) {
     const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$'];
     /** @type {TeqFw_Core_Back_Api_Dto_Command_Option.Factory} */
     const fOpt = spec['TeqFw_Core_Back_Api_Dto_Command_Option#Factory$'];
-    /** @type {TeqFw_Web_Push_Back_Act_Subscript_GetByFrontId.act|function} */
-    const actGetSubscript = spec['TeqFw_Web_Push_Back_Act_Subscript_GetByFrontId$'];
     /** @type {TeqFw_Web_Push_Back_Act_Subscript_SendMsg.act|function} */
     const actSendMsg = spec['TeqFw_Web_Push_Back_Act_Subscript_SendMsg$'];
 
@@ -45,25 +43,16 @@ export default function Factory(spec) {
      */
     async function action(opts) {
         const body = opts[OPT_BODY];
+        const frontId = opts[OPT_FRONT];
         const title = opts[OPT_TITLE];
-        const userId = opts[OPT_USER];
-        // logger.reset();
-        // logger.pause(false);
-        logger.info(`Push message "${body}" to user #${userId}.`);
+        logger.info(`Push message "${body}" to front #${frontId}.`);
         const trx = await rdb.startTransaction();
         try {
-            /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript[]} */
-            const {items} = await actGetSubscript({trx, frontId: userId});
-            for (const item of items) {
-                const endpoint = item.endpoint;
-                const auth = item.key_auth;
-                const p256dh = item.key_p256dh;
-                const res = await actSendMsg({title, body, endpoint, auth, p256dh});
-                logger.info(JSON.stringify(res));
-            }
-            trx.commit();
+            const res = await actSendMsg({trx, title, body, frontId});
+            logger.info(JSON.stringify(res));
+            await trx.commit();
         } catch (e) {
-            trx.rollback();
+            await trx.rollback();
             logger.error(`${e.toString()}`);
         }
         await rdb.disconnect();
@@ -79,8 +68,8 @@ export default function Factory(spec) {
     res.action = action;
     // add option --user
     const optUser = fOpt.create();
-    optUser.flags = `-u, --${OPT_USER} <user_id>`;
-    optUser.description = `User ID for recipient of the message`;
+    optUser.flags = `-f, --${OPT_FRONT} <front_id>`;
+    optUser.description = `Front ID for recipient of the message`;
     res.opts.push(optUser);
     // add option --body
     const optTitle = fOpt.create();
