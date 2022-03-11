@@ -1,7 +1,7 @@
 /**
  * Process to transfer Web Push subscription keys to the front.
  */
-export default class TeqFw_Web_Push_Back_Proc_Key_Load {
+export default class TeqFw_Web_Push_Back_Hand_Key_Load {
     constructor(spec) {
         // DEPS
         /** @type {TeqFw_Core_Shared_Api_ILogger} */
@@ -21,14 +21,14 @@ export default class TeqFw_Web_Push_Back_Proc_Key_Load {
         let _cache;
 
         // MAIN
-        eventsBack.subscribe(esfReq.getEventName(), handler)
+        eventsBack.subscribe(esfReq.getEventName(), onRequest)
 
         // FUNCS
         /**
          * @param {TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request.Dto} data
          * @param {TeqFw_Web_Shared_App_Event_Trans_Message_Meta.Dto} meta
          */
-        async function handler({data, meta}) {
+        async function onRequest({data, meta}) {
             // get from process cache or load keys from file
             if (!_cache) {
                 /** @type {{publicKey: string, privateKey: string}} */

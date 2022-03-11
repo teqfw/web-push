@@ -19,7 +19,7 @@ export default function (spec) {
     // DEPS
     /** @type {TeqFw_Db_Back_Api_RDb_ICrudEngine} */
     const crud = spec['TeqFw_Db_Back_Api_RDb_ICrudEngine$'];
-    /** @type {TeqFw_Db_Back_RDb_Meta_IEntity|TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
+    /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
     const rdbSubscript = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$'];
 
     // DEFINE WORKING VARS / PROPS

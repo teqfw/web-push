@@ -28,6 +28,8 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
         const esfSaveReq = spec['TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request$'];
         /** @type {TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response} */
         const esbSaveRes = spec['TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response$'];
+        /** @type {TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request} */
+        const esfRemoveReq = spec['TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request$'];
 
         // VARS
         const STORE_KEY = `${DEF.SHARED.NAME}/front/subscription`;
@@ -171,6 +173,13 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
                 logger.error(e);
             }
             return res;
+        }
+
+        this.unsubscribe = async function () {
+            const event = esfRemoveReq.createDto();
+            portalBack.publish(event);
+            await storeSingle.delete(STORE_KEY);
+            _cache = undefined;
         }
     }
 }

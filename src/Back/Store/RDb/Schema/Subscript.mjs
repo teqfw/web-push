@@ -19,7 +19,6 @@ const ATTR = {
     ENABLED: 'enabled',
     ENDPOINT: 'endpoint',
     FRONT_REF: 'front_ref',
-    ID: 'id',
     KEY_AUTH: 'key_auth',
     KEY_P256DH: 'key_p256dh',
 };
@@ -34,7 +33,6 @@ class Dto {
     enabled;
     endpoint;
     front_ref;
-    id;
     key_auth;
     key_p256dh;
 }

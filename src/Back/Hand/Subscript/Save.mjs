@@ -1,15 +1,13 @@
 /**
  * Process to save Web Push subscription to RDB.
  */
-export default class TeqFw_Web_Push_Back_Proc_Subscript_Save {
+export default class TeqFw_Web_Push_Back_Hand_Subscript_Save {
     constructor(spec) {
         // DEPS
         /** @type {TeqFw_Core_Shared_Api_ILogger} */
         const logger = spec['TeqFw_Core_Shared_Api_ILogger$$']; // instance
         /** @type {TeqFw_Db_Back_RDb_IConnect} */
         const rdb = spec['TeqFw_Db_Back_RDb_IConnect$'];
-        /** @type {TeqFw_Db_Back_Api_RDb_ICrudEngine} */
-        const crud = spec['TeqFw_Db_Back_Api_RDb_ICrudEngine$'];
         /** @type {TeqFw_Web_Back_Store_RDb_Schema_Front} */
         const rdbFront = spec['TeqFw_Web_Back_Store_RDb_Schema_Front$'];
         /** @type {TeqFw_Core_Back_App_Event_Bus} */
@@ -22,29 +20,24 @@ export default class TeqFw_Web_Push_Back_Proc_Subscript_Save {
         const esbRes = spec['TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response$'];
         /** @type {TeqFw_Web_Push_Back_Act_Subscript_Add.act|Function} */
         const actAdd = spec['TeqFw_Web_Push_Back_Act_Subscript_Add$'];
-
-        // VARS
-        /** @type {typeof TeqFw_Web_Back_Store_RDb_Schema_Front.ATTR} */
-        const A_FRONT = rdbFront.getAttributes();
+        /** @type {TeqFw_Web_Back_Act_Front_GetIdByUuid.act|function} */
+        const actGetFrontId = spec['TeqFw_Web_Back_Act_Front_GetIdByUuid$'];
 
         // MAIN
-        eventsBack.subscribe(esfReq.getEventName(), handler)
+        eventsBack.subscribe(esfReq.getEventName(), onRequest)
 
         // FUNCS
         /**
          * @param {TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request.Dto} data
          * @param {TeqFw_Web_Shared_App_Event_Trans_Message_Meta.Dto} meta
          */
-        async function handler({data, meta}) {
+        async function onRequest({data, meta}) {
             const subscript = data?.subscription;
-            const frontUUID = meta?.frontUUID;
+            const uuid = meta?.frontUUID;
             const trx = await rdb.startTransaction();
             try {
                 // get frontId by UUID
-                // TODO: use TeqFw_Web_Back_Act_Front_GetIdByUuid
-                /** @type {TeqFw_Web_Back_Store_RDb_Schema_Front.Dto} */
-                const found = await crud.readOne(trx, rdbFront, {[A_FRONT.UUID]: frontUUID});
-                const frontId = found ? found.id : null;
+                const {id: frontId} = await actGetFrontId({trx, uuid});
                 if (frontId) {
                     const opts = {
                         trx,

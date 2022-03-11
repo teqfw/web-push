@@ -49,7 +49,8 @@ export default function Factory(spec) {
         const trx = await rdb.startTransaction();
         try {
             const res = await actSendMsg({trx, title, body, frontId});
-            logger.info(JSON.stringify(res));
+            if (res) logger.info(JSON.stringify(res));
+            else logger.info(`Web Push is failed.`);
             await trx.commit();
         } catch (e) {
             await trx.rollback();
