@@ -59,7 +59,7 @@ export default function Factory(spec) {
         await rdb.disconnect();
     }
 
-    Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});
+    Object.defineProperty(action, 'namespace', {value: NS});
 
     // COMPOSE RESULT
     const res = fCommand.create();

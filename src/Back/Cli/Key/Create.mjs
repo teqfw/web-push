@@ -64,7 +64,7 @@ export default function Factory(spec) {
         }
     }
 
-    Object.defineProperty(action, 'name', {value: `${NS}.action`});
+    Object.defineProperty(action, 'namespace', {value: NS});
 
     // COMPOSE RESULT
     const res = fCommand.create();
