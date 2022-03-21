@@ -148,6 +148,8 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
                     applicationServerKey: key
                 };
                 const sw = await navigator.serviceWorker.ready;
+                const sub = await sw.pushManager.getSubscription();
+                if (sub) await sub.unsubscribe();
                 return await sw.pushManager.subscribe(opts);
             }
 
@@ -176,6 +178,9 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
         }
 
         this.unsubscribe = async function () {
+            const sw = await navigator.serviceWorker.ready;
+            const sub = await sw.pushManager.getSubscription();
+            if (sub) await sub.unsubscribe();
             const event = esfRemoveReq.createDto();
             portalBack.publish(event);
             await storeSingle.delete(STORE_KEY);
