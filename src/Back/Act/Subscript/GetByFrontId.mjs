@@ -14,7 +14,7 @@ export default function (spec) {
     /** @type {TeqFw_Db_Back_Api_RDb_ICrudEngine} */
     const crud = spec['TeqFw_Db_Back_Api_RDb_ICrudEngine$'];
 
-    // DEFINE WORKING VARS / PROPS
+    // VARS
     /** @type {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.ATTR} */
     const ATTR = meta.getAttributes();
 

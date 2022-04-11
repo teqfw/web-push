@@ -22,7 +22,7 @@ export default function (spec) {
     /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
     const rdbSubscript = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$'];
 
-    // DEFINE WORKING VARS / PROPS
+    // VARS
     /** @type {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.ATTR} */
     const ATTR = rdbSubscript.getAttributes();
 
