@@ -25,7 +25,7 @@ export default class TeqFw_Web_Push_Back_Hand_Subscript_Remove {
         // FUNCS
         /**
          * @param {TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request.Dto} data
-         * @param {TeqFw_Web_Shared_App_Event_Trans_Message_Meta.Dto} meta
+         * @param {TeqFw_Web_Event_Shared_Dto_Event_Meta.Dto} meta
          */
         async function onRequest({data, meta}) {
             const uuid = meta?.frontUUID;

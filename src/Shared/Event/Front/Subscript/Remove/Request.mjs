@@ -18,8 +18,8 @@ class Dto {
 export default class TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request {
     constructor(spec) {
         // DEPS
-        /** @type {TeqFw_Web_Shared_App_Event_Trans_Message} */
-        const dtoBase = spec['TeqFw_Web_Shared_App_Event_Trans_Message$'];
+        /** @type {TeqFw_Web_Event_Shared_Dto_Event} */
+        const dtoBase = spec['TeqFw_Web_Event_Shared_Dto_Event$'];
         // VARS
         const ATTR = dtoBase.getAttributes();
 
@@ -35,8 +35,8 @@ export default class TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request 
 
         // INSTANCE METHODS
         /**
-         * @param {{data: TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request.Dto, meta: TeqFw_Web_Shared_App_Event_Trans_Message_Meta.Dto}} [data]
-         * @return {{data: TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request.Dto, meta: TeqFw_Web_Shared_App_Event_Trans_Message_Meta.Dto}}
+         * @param {{data: TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request.Dto, meta: TeqFw_Web_Event_Shared_Dto_Event_Meta.Dto}} [data]
+         * @return {{data: TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request.Dto, meta: TeqFw_Web_Event_Shared_Dto_Event_Meta.Dto}}
          */
         this.createDto = function (data) {
             const res = dtoBase.createDto({[ATTR.META]: data?.[ATTR.META]});

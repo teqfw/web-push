@@ -12,10 +12,10 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
         const DEF = spec['TeqFw_Web_Push_Front_Defaults$'];
         /** @type {TeqFw_Core_Shared_Api_ILogger} */
         const logger = spec['TeqFw_Core_Shared_Api_ILogger$$']; // instance
-        /** @type {TeqFw_Web_Front_App_Event_Bus} */
-        const eventsFront = spec['TeqFw_Web_Front_App_Event_Bus$'];
-        /** @type {TeqFw_Web_Front_App_Connect_Event_Direct_Portal} */
-        const portalBack = spec['TeqFw_Web_Front_App_Connect_Event_Direct_Portal$'];
+        /** @type {TeqFw_Web_Event_Front_Mod_Bus} */
+        const eventsFront = spec['TeqFw_Web_Event_Front_Mod_Bus$'];
+        /** @type {TeqFw_Web_Event_Front_Mod_Connect_Direct_Portal} */
+        const portalBack = spec['TeqFw_Web_Event_Front_Mod_Connect_Direct_Portal$'];
         /** @type {TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request} */
         const esfKeyReq = spec['TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request$'];
         /** @type {TeqFw_Web_Push_Shared_Event_Back_Key_Load_Response} */

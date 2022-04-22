@@ -8,12 +8,10 @@ export default class TeqFw_Web_Push_Back_Hand_Subscript_Save {
         const logger = spec['TeqFw_Core_Shared_Api_ILogger$$']; // instance
         /** @type {TeqFw_Db_Back_RDb_IConnect} */
         const rdb = spec['TeqFw_Db_Back_RDb_IConnect$'];
-        /** @type {TeqFw_Web_Back_Store_RDb_Schema_Front} */
-        const rdbFront = spec['TeqFw_Web_Back_Store_RDb_Schema_Front$'];
         /** @type {TeqFw_Core_Back_App_Event_Bus} */
         const eventsBack = spec['TeqFw_Core_Back_App_Event_Bus$'];
-        /** @type {TeqFw_Web_Back_App_Server_Handler_Event_Reverse_Portal} */
-        const portalFront = spec['TeqFw_Web_Back_App_Server_Handler_Event_Reverse_Portal$'];
+        /** @type {TeqFw_Web_Event_Back_Mod_Server_Handler_Reverse_Portal} */
+        const portalFront = spec['TeqFw_Web_Event_Back_Mod_Server_Handler_Reverse_Portal$'];
         /** @type {TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request} */
         const esfReq = spec['TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request$'];
         /** @type {TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response} */
@@ -29,7 +27,7 @@ export default class TeqFw_Web_Push_Back_Hand_Subscript_Save {
         // FUNCS
         /**
          * @param {TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request.Dto} data
-         * @param {TeqFw_Web_Shared_App_Event_Trans_Message_Meta.Dto} meta
+         * @param {TeqFw_Web_Event_Shared_Dto_Event_Meta.Dto} meta
          */
         async function onRequest({data, meta}) {
             const subscript = data?.subscription;

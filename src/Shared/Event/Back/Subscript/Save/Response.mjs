@@ -20,8 +20,8 @@ class Dto {
 export default class TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response {
     constructor(spec) {
         // DEPS
-        /** @type {TeqFw_Web_Shared_App_Event_Trans_Message} */
-        const dtoBase = spec['TeqFw_Web_Shared_App_Event_Trans_Message$'];
+        /** @type {TeqFw_Web_Event_Shared_Dto_Event} */
+        const dtoBase = spec['TeqFw_Web_Event_Shared_Dto_Event$'];
         /** @type {TeqFw_Core_Shared_Util_Cast.castInt|function} */
         const castInt = spec['TeqFw_Core_Shared_Util_Cast.castInt'];
 
@@ -41,8 +41,8 @@ export default class TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response {
 
         // INSTANCE METHODS
         /**
-         * @param {{data: TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response.Dto, meta: TeqFw_Web_Shared_App_Event_Trans_Message_Meta.Dto}} [data]
-         * @return {{data: TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response.Dto, meta: TeqFw_Web_Shared_App_Event_Trans_Message_Meta.Dto}}
+         * @param {{data: TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response.Dto, meta: TeqFw_Web_Event_Shared_Dto_Event_Meta.Dto}} [data]
+         * @return {{data: TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response.Dto, meta: TeqFw_Web_Event_Shared_Dto_Event_Meta.Dto}}
          */
         this.createDto = function (data) {
             const res = dtoBase.createDto({[ATTR.META]: data?.[ATTR.META]});
