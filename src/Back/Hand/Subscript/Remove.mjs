@@ -16,8 +16,8 @@ export default class TeqFw_Web_Push_Back_Hand_Subscript_Remove {
         const eventsBack = spec['TeqFw_Core_Back_Mod_Event_Bus$'];
         /** @type {TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request} */
         const esfReq = spec['TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request$'];
-        /** @type {TeqFw_Web_Back_Act_Front_GetIdByUuid.act|function} */
-        const actGetFrontId = spec['TeqFw_Web_Back_Act_Front_GetIdByUuid$'];
+        /** @type {TeqFw_Web_Auth_Back_Act_Front_GetIdByUuid.act|function} */
+        const actGetFrontId = spec['TeqFw_Web_Auth_Back_Act_Front_GetIdByUuid$'];
 
         // MAIN
         eventsBack.subscribe(esfReq.getEventName(), onRequest)

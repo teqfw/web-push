@@ -18,8 +18,8 @@ export default class TeqFw_Web_Push_Back_Hand_Subscript_Save {
         const esbRes = spec['TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response$'];
         /** @type {TeqFw_Web_Push_Back_Act_Subscript_Add.act|Function} */
         const actAdd = spec['TeqFw_Web_Push_Back_Act_Subscript_Add$'];
-        /** @type {TeqFw_Web_Back_Act_Front_GetIdByUuid.act|function} */
-        const actGetFrontId = spec['TeqFw_Web_Back_Act_Front_GetIdByUuid$'];
+        /** @type {TeqFw_Web_Auth_Back_Act_Front_GetIdByUuid.act|function} */
+        const actGetFrontId = spec['TeqFw_Web_Auth_Back_Act_Front_GetIdByUuid$'];
 
         // MAIN
         eventsBack.subscribe(esfReq.getEventName(), onRequest)
