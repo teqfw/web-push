@@ -12,8 +12,8 @@ export default class TeqFw_Web_Push_Back_Hand_Subscript_Remove {
         const crud = spec['TeqFw_Db_Back_Api_RDb_ICrudEngine$'];
         /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
         const rdbSubscript = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$'];
-        /** @type {TeqFw_Core_Back_App_Event_Bus} */
-        const eventsBack = spec['TeqFw_Core_Back_App_Event_Bus$'];
+        /** @type {TeqFw_Core_Back_Mod_Event_Bus} */
+        const eventsBack = spec['TeqFw_Core_Back_Mod_Event_Bus$'];
         /** @type {TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request} */
         const esfReq = spec['TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request$'];
         /** @type {TeqFw_Web_Back_Act_Front_GetIdByUuid.act|function} */

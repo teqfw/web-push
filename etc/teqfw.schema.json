@@ -25,7 +25,7 @@
               "relation": {
                 "front": {
                   "attrs": ["front_ref"],
-                  "ref": {"path": "/web/front", "attrs": ["id"]},
+                  "ref": {"path": "/web/auth/front", "attrs": ["id"]},
                   "action": {"delete": "cascade", "update": "cascade"}
                 }
               }
@@ -36,6 +36,6 @@
     }
   },
   "refs": {
-    "/web/front": ["id"]
+    "/web/auth/front": ["id"]
   }
 }

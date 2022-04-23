@@ -8,8 +8,8 @@ export default class TeqFw_Web_Push_Back_Hand_Subscript_Save {
         const logger = spec['TeqFw_Core_Shared_Api_ILogger$$']; // instance
         /** @type {TeqFw_Db_Back_RDb_IConnect} */
         const rdb = spec['TeqFw_Db_Back_RDb_IConnect$'];
-        /** @type {TeqFw_Core_Back_App_Event_Bus} */
-        const eventsBack = spec['TeqFw_Core_Back_App_Event_Bus$'];
+        /** @type {TeqFw_Core_Back_Mod_Event_Bus} */
+        const eventsBack = spec['TeqFw_Core_Back_Mod_Event_Bus$'];
         /** @type {TeqFw_Web_Event_Back_Mod_Server_Handler_Reverse_Portal} */
         const portalFront = spec['TeqFw_Web_Event_Back_Mod_Server_Handler_Reverse_Portal$'];
         /** @type {TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request} */
