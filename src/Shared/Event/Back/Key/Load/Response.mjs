@@ -26,7 +26,7 @@ export default class TeqFw_Web_Push_Shared_Event_Back_Key_Load_Response {
         const castString = spec['TeqFw_Core_Shared_Util_Cast.castString'];
 
         // VARS
-        const ATTR = dtoBase.getAttributes();
+        // const ATTR = dtoBase.getAttributes();
 
         // FUNCS
         /**

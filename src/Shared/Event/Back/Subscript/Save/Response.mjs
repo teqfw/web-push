@@ -26,7 +26,7 @@ export default class TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response {
         const castInt = spec['TeqFw_Core_Shared_Util_Cast.castInt'];
 
         // VARS
-        const ATTR = dtoBase.getAttributes();
+        // const ATTR = dtoBase.getAttributes();
 
         // FUNCS
         /**

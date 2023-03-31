@@ -21,7 +21,7 @@ export default class TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request 
         /** @type {TeqFw_Web_Event_Shared_Dto_Event} */
         const dtoBase = spec['TeqFw_Web_Event_Shared_Dto_Event$'];
         // VARS
-        const ATTR = dtoBase.getAttributes();
+        // const ATTR = dtoBase.getAttributes();
 
         // FUNCS
         /**

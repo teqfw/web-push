@@ -4,12 +4,12 @@
 export default class TeqFw_Web_Push_Back_Hand_Key_Load {
     constructor(spec) {
         // DEPS
-        /** @type {TeqFw_Core_Shared_Api_ILogger} */
-        const logger = spec['TeqFw_Core_Shared_Api_ILogger$$']; // instance
-        /** @type {TeqFw_Core_Back_Mod_Event_Bus} */
-        const eventsBack = spec['TeqFw_Core_Back_Mod_Event_Bus$'];
-        /** @type {TeqFw_Web_Event_Back_Mod_Server_Handler_Reverse_Portal} */
-        const portalFront = spec['TeqFw_Web_Event_Back_Mod_Server_Handler_Reverse_Portal$'];
+        /** @type {TeqFw_Core_Shared_Api_Logger} */
+        const logger = spec['TeqFw_Core_Shared_Api_Logger$$']; // instance
+        /** @type {TeqFw_Web_Event_Back_Mod_Channel} */
+        const eventsBack = spec['TeqFw_Web_Event_Back_Mod_Channel$'];
+        /** @type {TeqFw_Web_Event_Back_Mod_Portal_Front} */
+        const portalFront = spec['TeqFw_Web_Event_Back_Mod_Portal_Front$'];
         /** @type {TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request} */
         const esfReq = spec['TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request$'];
         /** @type {TeqFw_Web_Push_Shared_Event_Back_Key_Load_Response} */

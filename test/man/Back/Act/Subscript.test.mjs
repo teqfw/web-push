@@ -10,8 +10,8 @@ import {loadRoot} from '../../lib/util.mjs';
 // get runtime objects from DI
 /** @type {TeqFw_Db_Back_RDb_Schema} */
 const schema = await container.get('TeqFw_Db_Back_RDb_Schema$');
-/** @type {TeqFw_Db_Back_Api_RDb_ICrudEngine} */
-const crud = await container.get('TeqFw_Db_Back_Api_RDb_ICrudEngine$');
+/** @type {TeqFw_Db_Back_Api_RDb_CrudEngine} */
+const crud = await container.get('TeqFw_Db_Back_Api_RDb_CrudEngine$');
 /** @type {TeqFw_User_Back_Store_RDb_Schema_User} */
 const meta = await container.get('TeqFw_User_Back_Store_RDb_Schema_User$');
 

@@ -26,7 +26,7 @@ export default function (spec) {
      * @memberOf TeqFw_Web_Push_Back_Act_Subscript_LoadKeys
      */
     function act() {
-        const root = config.getBoot().projectRoot;
+        const root = config.getPathToRoot();
         const path = join(root, DEF.FILE_VAPID_KEYS);
         if(existsSync(path)) {
             const {publicKey, privateKey} = readJson(path);

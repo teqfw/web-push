@@ -10,8 +10,8 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
         // DEPS
         /** @type {TeqFw_Web_Push_Front_Defaults} */
         const DEF = spec['TeqFw_Web_Push_Front_Defaults$'];
-        /** @type {TeqFw_Core_Shared_Api_ILogger} */
-        const logger = spec['TeqFw_Core_Shared_Api_ILogger$$']; // instance
+        /** @type {TeqFw_Core_Shared_Api_Logger} */
+        const logger = spec['TeqFw_Core_Shared_Api_Logger$$']; // instance
         /** @type {TeqFw_Web_Event_Front_Mod_Bus} */
         const eventsFront = spec['TeqFw_Web_Event_Front_Mod_Bus$'];
         /** @type {TeqFw_Web_Event_Front_Mod_Connect_Direct_Portal} */
