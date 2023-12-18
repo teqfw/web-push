@@ -6,14 +6,16 @@
  */
 // MODULE'S VARS
 const NS = 'TeqFw_Web_Push_Back_Act_Subscript_GetByFrontId';
-
-export default function (spec) {
-    // DEPS
-    /** @type {TeqFw_Db_Back_RDb_Meta_IEntity|TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
-    const meta = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$'];
-    /** @type {TeqFw_Db_Back_Api_RDb_CrudEngine} */
-    const crud = spec['TeqFw_Db_Back_Api_RDb_CrudEngine$'];
-
+/**
+ * @param {TeqFw_Db_Back_RDb_Meta_IEntity|TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} meta
+ * @param {TeqFw_Db_Back_Api_RDb_CrudEngine} crud
+ */
+export default function (
+    {
+        TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$: meta,
+        TeqFw_Db_Back_Api_RDb_CrudEngine$: crud,
+    }
+) {
     // VARS
     /** @type {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.ATTR} */
     const ATTR = meta.getAttributes();

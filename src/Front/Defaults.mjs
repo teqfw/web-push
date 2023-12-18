@@ -6,10 +6,16 @@ export default class TeqFw_Web_Push_Front_Defaults {
     /** @type {TeqFw_Web_Push_Shared_Defaults} */
     SHARED;
 
-    constructor(spec) {
+    /**
+     *  @param {TeqFw_Web_Push_Shared_Defaults} SHARED
+     */
+    constructor(
+        {
+            TeqFw_Web_Push_Shared_Defaults$: SHARED,
+        }
+    ) {
         // DEPS
-        /** @type {TeqFw_Web_Push_Shared_Defaults} */
-        this.SHARED = spec['TeqFw_Web_Push_Shared_Defaults$'];
+        this.SHARED = SHARED;
 
         // MAIN
         Object.freeze(this);

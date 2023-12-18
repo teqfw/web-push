@@ -15,26 +15,23 @@ const OPT_TITLE = 'title';
 /**
  * Factory to create CLI command.
  *
- * @param {TeqFw_Di_Shared_SpecProxy} spec
- * @returns {TeqFw_Core_Back_Api_Dto_Command}
- * @constructor
- * @memberOf TeqFw_Web_Push_Back_Cli_Send
+ * @param {TeqFw_Web_Push_Back_Defaults} DEF
+ * @param {TeqFw_Core_Shared_Api_Logger} logger -  instance
+ * @param {TeqFw_Db_Back_RDb_IConnect} rdb
+ * @param {TeqFw_Core_Back_Api_Dto_Command.Factory} fCommand
+ * @param {TeqFw_Core_Back_Api_Dto_Command_Option.Factory} fOpt
+ * @param {TeqFw_Web_Push_Back_Act_Subscript_SendMsg.act|function} actSendMsg
  */
-export default function Factory(spec) {
-    // DEPS
-    /** @type {TeqFw_Web_Push_Back_Defaults} */
-    const DEF = spec['TeqFw_Web_Push_Back_Defaults$'];
-    /** @type {TeqFw_Core_Shared_Api_Logger} */
-    const logger = spec['TeqFw_Core_Shared_Api_Logger$$']; // instance
-    /** @type {TeqFw_Db_Back_RDb_IConnect} */
-    const rdb = spec['TeqFw_Db_Back_RDb_IConnect$'];
-    /** @type {TeqFw_Core_Back_Api_Dto_Command.Factory} */
-    const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$'];
-    /** @type {TeqFw_Core_Back_Api_Dto_Command_Option.Factory} */
-    const fOpt = spec['TeqFw_Core_Back_Api_Dto_Command_Option#Factory$'];
-    /** @type {TeqFw_Web_Push_Back_Act_Subscript_SendMsg.act|function} */
-    const actSendMsg = spec['TeqFw_Web_Push_Back_Act_Subscript_SendMsg$'];
-
+export default function Factory(
+    {
+        TeqFw_Web_Push_Back_Defaults$: DEF,
+        TeqFw_Core_Shared_Api_Logger$$: logger,
+        TeqFw_Db_Back_RDb_IConnect$: rdb,
+        'TeqFw_Core_Back_Api_Dto_Command#Factory$': fCommand,
+        'TeqFw_Core_Back_Api_Dto_Command_Option#Factory$': fOpt,
+        TeqFw_Web_Push_Back_Act_Subscript_SendMsg$: actSendMsg,
+    }
+) {
     // FUNCS
     /**
      * Command action.

@@ -15,22 +15,19 @@ const NS = 'TeqFw_Web_Push_Back_Cli_Key_Create';
 /**
  * Factory to create CLI command.
  *
- * @param {TeqFw_Di_Shared_SpecProxy} spec
- * @returns {TeqFw_Core_Back_Api_Dto_Command}
- * @constructor
- * @memberOf TeqFw_Web_Push_Back_Cli_Key_Create
+ * @param {TeqFw_Web_Push_Back_Defaults} DEF
+ * @param {TeqFw_Core_Back_Config} config
+ * @param {TeqFw_Core_Shared_Api_Logger} logger -  instance
+ * @param {TeqFw_Core_Back_Api_Dto_Command.Factory} fCommand
  */
-export default function Factory(spec) {
-    // DEPS
-    /** @type {TeqFw_Web_Push_Back_Defaults} */
-    const DEF = spec['TeqFw_Web_Push_Back_Defaults$'];
-    /** @type {TeqFw_Core_Back_Config} */
-    const config = spec['TeqFw_Core_Back_Config$'];
-    /** @type {TeqFw_Core_Shared_Api_Logger} */
-    const logger = spec['TeqFw_Core_Shared_Api_Logger$$']; // instance
-    /** @type {TeqFw_Core_Back_Api_Dto_Command.Factory} */
-    const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$'];
-
+export default function Factory(
+    {
+        TeqFw_Web_Push_Back_Defaults$: DEF,
+        TeqFw_Core_Back_Config$: config,
+        TeqFw_Core_Shared_Api_Logger$$: logger,
+        'TeqFw_Core_Back_Api_Dto_Command#Factory$': fCommand,
+    }
+) {
 
     // FUNCS
     /**

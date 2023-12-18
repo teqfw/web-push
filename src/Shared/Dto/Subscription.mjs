@@ -35,17 +35,20 @@ class Dto {
  * @implements TeqFw_Core_Shared_Api_Factory_Dto_IMeta
  */
 export default class TeqFw_Web_Push_Shared_Dto_Subscription {
-
-    constructor(spec) {
-        /** @type {TeqFw_Core_Shared_Util_Cast.castDate|function} */
-        const castDate = spec['TeqFw_Core_Shared_Util_Cast.castDate'];
-        /** @type {TeqFw_Core_Shared_Util_Cast.castInt|function} */
-        const castInt = spec['TeqFw_Core_Shared_Util_Cast.castInt'];
-        /** @type {TeqFw_Core_Shared_Util_Cast.castString|function} */
-        const castString = spec['TeqFw_Core_Shared_Util_Cast.castString'];
-        /** @type {TeqFw_Web_Push_Shared_Dto_Subscription_Keys} */
-        const dtoKeys = spec['TeqFw_Web_Push_Shared_Dto_Subscription_Keys$'];
-
+    /**
+     * @param {TeqFw_Core_Shared_Util_Cast.castDate|function} castDate
+     * @param {TeqFw_Core_Shared_Util_Cast.castInt|function} castInt
+     * @param {TeqFw_Core_Shared_Util_Cast.castString|function} castString
+     * @param {TeqFw_Web_Push_Shared_Dto_Subscription_Keys} dtoKeys
+     */
+    constructor(
+        {
+            'TeqFw_Core_Shared_Util_Cast.castDate': castDate,
+            'TeqFw_Core_Shared_Util_Cast.castInt': castInt,
+            'TeqFw_Core_Shared_Util_Cast.castString': castString,
+            TeqFw_Web_Push_Shared_Dto_Subscription_Keys$: dtoKeys,
+        }
+    ) {
         // INSTANCE METHODS
         /**
          * @param {TeqFw_Web_Push_Shared_Dto_Subscription.Dto} data

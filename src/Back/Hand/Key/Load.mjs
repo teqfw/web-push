@@ -2,21 +2,24 @@
  * Process to transfer Web Push subscription keys to the front.
  */
 export default class TeqFw_Web_Push_Back_Hand_Key_Load {
-    constructor(spec) {
-        // DEPS
-        /** @type {TeqFw_Core_Shared_Api_Logger} */
-        const logger = spec['TeqFw_Core_Shared_Api_Logger$$']; // instance
-        /** @type {TeqFw_Web_Event_Back_Mod_Channel} */
-        const eventsBack = spec['TeqFw_Web_Event_Back_Mod_Channel$'];
-        /** @type {TeqFw_Web_Event_Back_Mod_Portal_Front} */
-        const portalFront = spec['TeqFw_Web_Event_Back_Mod_Portal_Front$'];
-        /** @type {TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request} */
-        const esfReq = spec['TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request$'];
-        /** @type {TeqFw_Web_Push_Shared_Event_Back_Key_Load_Response} */
-        const esbRes = spec['TeqFw_Web_Push_Shared_Event_Back_Key_Load_Response$'];
-        /** @type {TeqFw_Web_Push_Back_Act_Subscript_LoadKeys.act|function} */
-        const actLoad = spec['TeqFw_Web_Push_Back_Act_Subscript_LoadKeys$'];
-
+    /**
+     * @param {TeqFw_Core_Shared_Api_Logger} logger -  instance
+     * @param {TeqFw_Web_Event_Back_Mod_Channel} eventsBack
+     * @param {TeqFw_Web_Event_Back_Mod_Portal_Front} portalFront
+     * @param {TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request} esfReq
+     * @param {TeqFw_Web_Push_Shared_Event_Back_Key_Load_Response} esbRes
+     * @param {TeqFw_Web_Push_Back_Act_Subscript_LoadKeys.act|function} actLoad
+     */
+    constructor(
+        {
+            TeqFw_Core_Shared_Api_Logger$$: logger,
+            TeqFw_Web_Event_Back_Mod_Channel$: eventsBack,
+            TeqFw_Web_Event_Back_Mod_Portal_Front$: portalFront,
+            TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request$: esfReq,
+            TeqFw_Web_Push_Shared_Event_Back_Key_Load_Response$: esbRes,
+            TeqFw_Web_Push_Back_Act_Subscript_LoadKeys$: actLoad,
+        }
+    ) {
         // VARS
         let _cache;
 

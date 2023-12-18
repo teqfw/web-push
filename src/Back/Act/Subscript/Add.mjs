@@ -14,14 +14,16 @@ const RESULT = {
     SUCCESS: 'success',
 }
 Object.freeze(RESULT);
-
-export default function (spec) {
-    // DEPS
-    /** @type {TeqFw_Db_Back_Api_RDb_CrudEngine} */
-    const crud = spec['TeqFw_Db_Back_Api_RDb_CrudEngine$'];
-    /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
-    const rdbSubscript = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$'];
-
+/**
+ * @param {TeqFw_Db_Back_Api_RDb_CrudEngine} crud
+ * @param {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} rdbSubscript
+ */
+export default function (
+    {
+        TeqFw_Db_Back_Api_RDb_CrudEngine$: crud,
+        TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$: rdbSubscript,
+    }
+) {
     // VARS
     /** @type {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.ATTR} */
     const ATTR = rdbSubscript.getAttributes();

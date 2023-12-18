@@ -22,8 +22,15 @@ export default class TeqFw_Web_Push_Back_Api_Dto_Config_Local {
 export class Factory {
     static namespace = NS;
 
-    constructor(spec) {
-        const {castString} = spec['TeqFw_Core_Shared_Util_Cast'];
+    /**
+     * @param {TeqFw_Core_Shared_Util_Cast.castString|function} castString
+     */
+    constructor(
+        {
+            ['TeqFw_Core_Shared_Util_Cast.castString']: castString,
+        }
+    ) {
+
         /**
          * @param {TeqFw_Web_Push_Back_Api_Dto_Config_Local|null} data
          * @return {TeqFw_Web_Push_Back_Api_Dto_Config_Local}

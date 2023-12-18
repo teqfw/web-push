@@ -18,13 +18,16 @@ class Dto {
  * @implements TeqFw_Core_Shared_Api_Factory_Dto_IEvent
  */
 export default class TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request {
-    constructor(spec) {
-        // DEPS
-        /** @type {TeqFw_Web_Event_Shared_Dto_Event} */
-        const dtoBase = spec['TeqFw_Web_Event_Shared_Dto_Event$'];
-        /** @type {TeqFw_Web_Push_Shared_Dto_Subscription} */
-        const dtoSubscript = spec['TeqFw_Web_Push_Shared_Dto_Subscription$'];
-
+    /**
+     * @param {TeqFw_Web_Event_Shared_Dto_Event} dtoBase
+     * @param {TeqFw_Web_Push_Shared_Dto_Subscription} dtoSubscript
+     */
+    constructor(
+        {
+            TeqFw_Web_Event_Shared_Dto_Event$: dtoBase,
+            TeqFw_Web_Push_Shared_Dto_Subscription$: dtoSubscript,
+        }
+    ) {
         // VARS
         // const ATTR = dtoBase.getAttributes();
 

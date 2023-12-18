@@ -11,8 +11,15 @@ export default class TeqFw_Web_Push_Shared_Defaults {
     /** @type {TeqFw_Web_Shared_Defaults} */
     MOD_WEB;
 
-    constructor(spec) {
-        this.MOD_WEB = spec['TeqFw_Web_Shared_Defaults$'];
+    /**
+     * @param {TeqFw_Web_Shared_Defaults} MOD_WEB
+     */
+    constructor(
+        {
+            TeqFw_Web_Shared_Defaults$: MOD_WEB,
+        }
+    ) {
+        this.MOD_WEB = MOD_WEB;
         Object.freeze(this);
     }
 }

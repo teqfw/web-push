@@ -16,11 +16,14 @@ class Dto {
  * @implements TeqFw_Core_Shared_Api_Factory_Dto_IEvent
  */
 export default class TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request {
-    constructor(spec) {
-        // DEPS
-        /** @type {TeqFw_Web_Event_Shared_Dto_Event} */
-        const dtoBase = spec['TeqFw_Web_Event_Shared_Dto_Event$'];
-
+    /**
+     * @param {TeqFw_Web_Event_Shared_Dto_Event} dtoBase
+     */
+    constructor(
+        {
+            TeqFw_Web_Event_Shared_Dto_Event$: dtoBase,
+        }
+    ) {
         // VARS
         // const ATTR = dtoBase.getAttributes();
 

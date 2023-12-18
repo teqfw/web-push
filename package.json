@@ -27,7 +27,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@teqfw/web": "*",
+    "@teqfw/web-api": "*",
     "web-push": "^3"
   },
   "devDependencies": {

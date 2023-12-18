@@ -29,11 +29,14 @@ class Dto {
  * @implements TeqFw_Core_Shared_Api_Factory_Dto_IMeta
  */
 export default class TeqFw_Web_Push_Shared_Dto_Subscription_Keys {
-
-    constructor(spec) {
-        /** @type {TeqFw_Core_Shared_Util_Cast.castString|function} */
-        const castString = spec['TeqFw_Core_Shared_Util_Cast.castString'];
-
+    /**
+     * @param {TeqFw_Core_Shared_Util_Cast.castString|function} castString
+     */
+    constructor(
+        {
+            'TeqFw_Core_Shared_Util_Cast.castString': castString,
+        }
+    ) {
         // INSTANCE METHODS
         /**
          * @param {TeqFw_Web_Push_Shared_Dto_Subscription_Keys.Dto} data

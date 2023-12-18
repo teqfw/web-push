@@ -2,23 +2,26 @@
  * Process to remove Web Push subscription from RDB.
  */
 export default class TeqFw_Web_Push_Back_Hand_Subscript_Remove {
-    constructor(spec) {
-        // DEPS
-        /** @type {TeqFw_Core_Shared_Api_Logger} */
-        const logger = spec['TeqFw_Core_Shared_Api_Logger$$']; // instance
-        /** @type {TeqFw_Db_Back_RDb_IConnect} */
-        const rdb = spec['TeqFw_Db_Back_RDb_IConnect$'];
-        /** @type {TeqFw_Db_Back_Api_RDb_CrudEngine} */
-        const crud = spec['TeqFw_Db_Back_Api_RDb_CrudEngine$'];
-        /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} */
-        const rdbSubscript = spec['TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$'];
-        /** @type {TeqFw_Web_Event_Back_Mod_Channel} */
-        const eventsBack = spec['TeqFw_Web_Event_Back_Mod_Channel$'];
-        /** @type {TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request} */
-        const esfReq = spec['TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request$'];
-        /** @type {TeqFw_Web_Auth_Back_Act_Front_GetIdByUuid.act|function} */
-        // const actGetFrontId = spec['TeqFw_Web_Auth_Back_Act_Front_GetIdByUuid$'];
-
+    /**
+     * @param {TeqFw_Core_Shared_Api_Logger} logger -  instance
+     * @param {TeqFw_Db_Back_RDb_IConnect} rdb
+     * @param {TeqFw_Db_Back_Api_RDb_CrudEngine} crud
+     * @param {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} rdbSubscript
+     * @param {TeqFw_Web_Event_Back_Mod_Channel} eventsBack
+     * @param {TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request} esfReq
+     * @param {TeqFw_Web_Auth_Back_Act_Front_GetIdByUuid.act|function} actGetFrontId
+     */
+    constructor(
+        {
+            TeqFw_Core_Shared_Api_Logger$$: logger,
+            TeqFw_Db_Back_RDb_IConnect$: rdb,
+            TeqFw_Db_Back_Api_RDb_CrudEngine$: crud,
+            TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$: rdbSubscript,
+            TeqFw_Web_Event_Back_Mod_Channel$: eventsBack,
+            TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request$: esfReq,
+            TeqFw_Web_Auth_Back_Act_Front_GetIdByUuid$: actGetFrontId,
+        }
+    ) {
         // MAIN
         eventsBack.subscribe(esfReq.getEventName(), onRequest)
 

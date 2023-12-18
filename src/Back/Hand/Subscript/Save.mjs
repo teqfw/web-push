@@ -2,25 +2,28 @@
  * Process to save Web Push subscription to RDB.
  */
 export default class TeqFw_Web_Push_Back_Hand_Subscript_Save {
-    constructor(spec) {
-        // DEPS
-        /** @type {TeqFw_Core_Shared_Api_Logger} */
-        const logger = spec['TeqFw_Core_Shared_Api_Logger$$']; // instance
-        /** @type {TeqFw_Db_Back_RDb_IConnect} */
-        const rdb = spec['TeqFw_Db_Back_RDb_IConnect$'];
-        /** @type {TeqFw_Web_Event_Back_Mod_Channel} */
-        const eventsBack = spec['TeqFw_Web_Event_Back_Mod_Channel$'];
-        /** @type {TeqFw_Web_Event_Back_Mod_Portal_Front} */
-        const portalFront = spec['TeqFw_Web_Event_Back_Mod_Portal_Front$'];
-        /** @type {TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request} */
-        const esfReq = spec['TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request$'];
-        /** @type {TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response} */
-        const esbRes = spec['TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response$'];
-        /** @type {TeqFw_Web_Push_Back_Act_Subscript_Add.act|Function} */
-        const actAdd = spec['TeqFw_Web_Push_Back_Act_Subscript_Add$'];
-        /** @type {TeqFw_Web_Auth_Back_Act_Front_GetIdByUuid.act|function} */
-        // const actGetFrontId = spec['TeqFw_Web_Auth_Back_Act_Front_GetIdByUuid$'];
-
+    /**
+     * @param {TeqFw_Core_Shared_Api_Logger} logger -  instance
+     * @param {TeqFw_Db_Back_RDb_IConnect} rdb
+     * @param {TeqFw_Web_Event_Back_Mod_Channel} eventsBack
+     * @param {TeqFw_Web_Event_Back_Mod_Portal_Front} portalFront
+     * @param {TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request} esfReq
+     * @param {TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response} esbRes
+     * @param {TeqFw_Web_Push_Back_Act_Subscript_Add.act|Function} actAdd
+     * @param {TeqFw_Web_Auth_Back_Act_Front_GetIdByUuid.act|function} actGetFrontId
+     */
+    constructor(
+        {
+            TeqFw_Core_Shared_Api_Logger$$: logger,
+            TeqFw_Db_Back_RDb_IConnect$: rdb,
+            TeqFw_Web_Event_Back_Mod_Channel$: eventsBack,
+            TeqFw_Web_Event_Back_Mod_Portal_Front$: portalFront,
+            TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request$: esfReq,
+            TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response$: esbRes,
+            TeqFw_Web_Push_Back_Act_Subscript_Add$: actAdd,
+            TeqFw_Web_Auth_Back_Act_Front_GetIdByUuid$: actGetFrontId,
+        }
+    ) {
         // MAIN
         eventsBack.subscribe(esfReq.getEventName(), onRequest)
 

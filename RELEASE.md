@@ -2,7 +2,8 @@
 
 # 0.x.x
 
-* Restructure directories and files.
+* Restructure the directories and files.
+* Switch to the new format of dependency injection.
 *
 
 ## 0.2.0

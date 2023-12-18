@@ -1,5 +1,5 @@
 /**
- *  Meta data for '/web/push/subscription' entity.
+ *  Metadata for '/web/push/subscription' entity.
  *  @namespace TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript
  */
 // MODULE'S VARS
@@ -42,12 +42,16 @@ class Dto {
  * @implements TeqFw_Db_Back_RDb_Meta_IEntity
  */
 export default class TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript {
-    constructor(spec) {
-        /** @type {TeqFw_Web_Push_Back_Defaults} */
-        const DEF = spec['TeqFw_Web_Push_Back_Defaults$'];
-        /** @type {TeqFw_Db_Back_RDb_Schema_EntityBase} */
-        const base = spec['TeqFw_Db_Back_RDb_Schema_EntityBase$'];
-
+    /**
+     * @param {TeqFw_Web_Push_Back_Defaults} DEF
+     * @param {TeqFw_Db_Back_RDb_Schema_EntityBase} base
+     */
+    constructor(
+        {
+            TeqFw_Web_Push_Back_Defaults$: DEF,
+            TeqFw_Db_Back_RDb_Schema_EntityBase$: base,
+        }
+    ) {
         return base.create(this,
             `${DEF.SHARED.NAME}${ENTITY}`,
             ATTR,
