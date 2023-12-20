@@ -14,5 +14,12 @@
     "plugin": {
       "onInit": "TeqFw_Web_Push_Back_Plugin_Init"
     }
+  },
+  "@teqfw/web-api": {
+    "services": [
+      "TeqFw_Web_Push_Back_Web_Api_Key_Load",
+      "TeqFw_Web_Push_Back_Web_Api_Subscript_Create",
+      "TeqFw_Web_Push_Back_Web_Api_Subscript_Delete"
+    ]
   }
 }

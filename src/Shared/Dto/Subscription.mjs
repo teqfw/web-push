@@ -4,17 +4,6 @@
 // MODULE'S VARS
 const NS = 'TeqFw_Web_Push_Shared_Dto_Subscription';
 
-/**
- * @memberOf TeqFw_Web_Push_Shared_Dto_Subscription
- * @type {Object}
- */
-const ATTR = {
-    ENDPOINT: 'endpoint',
-    EXPIRATION_TIME: 'expirationTime',
-    FRONT_ID: 'frontId',
-    KEYS: 'keys',
-};
-
 // MODULE'S CLASSES
 /**
  * @memberOf TeqFw_Web_Push_Shared_Dto_Subscription
@@ -32,7 +21,7 @@ class Dto {
 }
 
 /**
- * @implements TeqFw_Core_Shared_Api_Factory_Dto_IMeta
+ * @implements TeqFw_Core_Shared_Api_Factory_Dto
  */
 export default class TeqFw_Web_Push_Shared_Dto_Subscription {
     /**
@@ -62,13 +51,6 @@ export default class TeqFw_Web_Push_Shared_Dto_Subscription {
             res.keys = dtoKeys.createDto(data?.keys);
             return res;
         }
-
-        this.getAttributes = () => ATTR;
-
-        this.getAttrNames = () => Object.values(ATTR);
     }
 
 }
-
-// finalize code components for this es6-module
-Object.freeze(ATTR);

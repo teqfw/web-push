@@ -4,15 +4,6 @@
 // MODULE'S VARS
 const NS = 'TeqFw_Web_Push_Shared_Dto_Subscription_Keys';
 
-/**
- * @memberOf TeqFw_Web_Push_Shared_Dto_Subscription_Keys
- * @type {Object}
- */
-const ATTR = {
-    AUTH: 'auth',
-    P256DH: 'p256dh',
-};
-
 // MODULE'S CLASSES
 /**
  * @memberOf TeqFw_Web_Push_Shared_Dto_Subscription_Keys
@@ -26,7 +17,7 @@ class Dto {
 }
 
 /**
- * @implements TeqFw_Core_Shared_Api_Factory_Dto_IMeta
+ * @implements TeqFw_Core_Shared_Api_Factory_Dto
  */
 export default class TeqFw_Web_Push_Shared_Dto_Subscription_Keys {
     /**
@@ -48,13 +39,6 @@ export default class TeqFw_Web_Push_Shared_Dto_Subscription_Keys {
             res.p256dh = castString(data?.p256dh);
             return res;
         }
-
-        this.getAttributes = () => ATTR;
-
-        this.getAttrNames = () => Object.values(ATTR);
     }
 
 }
-
-// finalize code components for this es6-module
-Object.freeze(ATTR);

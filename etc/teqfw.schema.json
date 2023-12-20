@@ -15,6 +15,11 @@
                   "type": "datetime",
                   "default": "current"
                 },
+                "date_expired": {
+                  "comment": "Date-time for expiration date.",
+                  "type": "datetime",
+                  "nullable": true
+                },
                 "endpoint": {"type": "string"},
                 "key_auth": {"type": "string"},
                 "key_p256dh": {"type": "string"}

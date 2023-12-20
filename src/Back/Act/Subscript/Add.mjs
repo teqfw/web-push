@@ -2,6 +2,7 @@
  * Add new subscription to RDB.
  *
  * @namespace TeqFw_Web_Push_Back_Act_Subscript_Add
+ * @deprecated use TeqFw_Web_Push_Back_Web_Api_Subscript_Create (remove this code after 2024/03/01)
  */
 // MODULE'S VARS
 const NS = 'TeqFw_Web_Push_Back_Act_Subscript_Add';

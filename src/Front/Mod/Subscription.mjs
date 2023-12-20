@@ -7,39 +7,23 @@
  */
 export default class TeqFw_Web_Push_Front_Mod_Subscription {
     /**
-     * @param {TeqFw_Web_Push_Front_Defaults} DEF
      * @param {TeqFw_Core_Shared_Api_Logger} logger -  instance
-     * @param {TeqFw_Web_Event_Front_Mod_Bus} eventsFront
-     * @param {TeqFw_Web_Event_Front_Mod_Connect_Direct_Portal} portalBack
-     * @param {TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request} esfKeyReq
-     * @param {TeqFw_Web_Push_Shared_Event_Back_Key_Load_Response} esbKeyRes
+     * @param {TeqFw_Web_Api_Front_Web_Connect} connApi
+     * @param {TeqFw_Web_Push_Shared_Web_Api_Key_Load} apiKeyLoad
+     * @param {TeqFw_Web_Push_Shared_Web_Api_Subscript_Create} apiCreate
+     * @param {TeqFw_Web_Push_Shared_Web_Api_Subscript_Delete} apiDelete
      * @param {TeqFw_Web_Push_Shared_Dto_Subscription} dtoSubscript
-     * @param {TeqFw_Web_Front_Mod_Store_Singleton} storeSingle
-     * @param {TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request} esfSaveReq
-     * @param {TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response} esbSaveRes
-     * @param {TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request} esfRemoveReq
      */
     constructor(
         {
-            TeqFw_Web_Push_Front_Defaults$: DEF,
             TeqFw_Core_Shared_Api_Logger$$: logger,
-            TeqFw_Web_Event_Front_Mod_Bus$: eventsFront,
-            TeqFw_Web_Event_Front_Mod_Connect_Direct_Portal$: portalBack,
-            TeqFw_Web_Push_Shared_Event_Front_Key_Load_Request$: esfKeyReq,
-            TeqFw_Web_Push_Shared_Event_Back_Key_Load_Response$: esbKeyRes,
+            TeqFw_Web_Api_Front_Web_Connect$: connApi,
+            TeqFw_Web_Push_Shared_Web_Api_Key_Load$: apiKeyLoad,
+            TeqFw_Web_Push_Shared_Web_Api_Subscript_Create$: apiCreate,
+            TeqFw_Web_Push_Shared_Web_Api_Subscript_Delete$: apiDelete,
             TeqFw_Web_Push_Shared_Dto_Subscription$: dtoSubscript,
-            TeqFw_Web_Front_Mod_Store_Singleton$: storeSingle,
-            TeqFw_Web_Push_Shared_Event_Front_Subscript_Save_Request$: esfSaveReq,
-            TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response$: esbSaveRes,
-            TeqFw_Web_Push_Shared_Event_Front_Subscript_Remove_Request$: esfRemoveReq,
         }
     ) {
-        // VARS
-        const STORE_KEY = `${DEF.SHARED.NAME}/front/subscription`;
-        let _cache;
-        // MAIN
-        logger.setNamespace(this.constructor.name);
-
         // INSTANCE METHODS
         /**
          * Return 'true' if browser Web Push API compliant.
@@ -51,92 +35,49 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
         }
 
         /**
-         * Get subscription data from IDB.
-         * @return {Promise<TeqFw_Web_Push_Shared_Dto_Subscription.Dto>}
-         */
-        this.get = async () => {
-            if (!_cache) _cache = await storeSingle.get(STORE_KEY);
-            return _cache;
-        }
-
-        /**
-         * Return 'true' if there is subscription data stored in IDB.
+         * Return 'true' if there is subscription data in the SW.
          * @return {Promise<boolean>}
          */
         this.hasSubscription = async () => {
-            /** @type {TeqFw_Web_Push_Shared_Dto_Subscription.Dto} */
-            const sub = await this.get();
-            return (typeof sub?.endpoint === 'string');
+            const sw = await navigator.serviceWorker.ready;
+            const subs = await sw.pushManager.getSubscription();
+            return !!(subs);
         }
 
         /**
          * Load public key from server to subscribe to use Web Push API then subscribe.
+         *
+         * @param {number} frontRef backend ID for the related front
          * @return {Promise<boolean>} 'true' if subscription is succeeded
          */
-        this.subscribe = async () => {
+        this.subscribe = async (frontRef) => {
             // FUNCS
             /**
              * Load public server key for asymmetric encryption.
-             * @return {Promise<string|null>}
+             * @return {Promise<string>}
              */
             async function loadServerKey() {
-                return new Promise((resolve) => {
-                    // VARS
-                    let idFail, sub;
-
-                    // FUNCS
-                    /**
-                     * @param {TeqFw_Web_Push_Shared_Event_Back_Key_Load_Response.Dto} data
-                     */
-                    function onResponse({data}) {
-                        clearTimeout(idFail);
-                        resolve(data.key);
-                        eventsFront.unsubscribe(sub);
-                    }
-
-                    // MAIN
-                    sub = eventsFront.subscribe(esbKeyRes.getEventName(), onResponse);
-                    idFail = setTimeout(() => {
-                        eventsFront.unsubscribe(sub);
-                        resolve(null);
-                    }, DEF.SHARED.MOD_WEB.TIMEOUT_EVENT_RESPONSE); // return nothing after timeout
-                    // request data from back
-                    const message = esfKeyReq.createDto();
-                    portalBack.publish(message);
-                });
+                const req = apiKeyLoad.createReq();
+                req.frontRef = frontRef;
+                /** @type {TeqFw_Web_Push_Shared_Web_Api_Key_Load.Response} */
+                const rs = await connApi.send(req, apiKeyLoad);
+                return rs?.key;
             }
 
             /**
              * Save subscription to back and get frontId from server.
-             * @param {TeqFw_Web_Push_Shared_Dto_Subscription.Dto} data
-             * @return {Promise<number|null>}
+             *
+             * @param {number} frontRef backend ID for the related front
+             * @param {TeqFw_Web_Push_Shared_Dto_Subscription.Dto} subs
+             * @return {Promise<boolean>}
              */
-            async function saveSubscription(data) {
-                return new Promise((resolve) => {
-                    // VARS
-                    let idFail, sub;
-
-                    // FUNCS
-                    /**
-                     * @param {TeqFw_Web_Push_Shared_Event_Back_Subscript_Save_Response.Dto} data
-                     */
-                    function onResponse({data}) {
-                        clearTimeout(idFail);
-                        resolve(data.frontId);
-                        eventsFront.unsubscribe(sub);
-                    }
-
-                    // MAIN
-                    sub = eventsFront.subscribe(esbSaveRes.getEventName(), onResponse);
-                    idFail = setTimeout(() => {
-                        eventsFront.unsubscribe(sub);
-                        resolve(null);
-                    }, DEF.SHARED.MOD_WEB.TIMEOUT_EVENT_RESPONSE); // return nothing after timeout
-                    // request the back to perform operation
-                    const event = esfSaveReq.createDto();
-                    event.data.subscription = data;
-                    portalBack.publish(event);
-                });
+            async function saveSubscription(frontRef, subs) {
+                const req = apiCreate.createReq();
+                req.frontRef = frontRef;
+                req.subscription = subs;
+                /** @type {TeqFw_Web_Push_Shared_Web_Api_Subscript_Create.Response} */
+                const rs = await connApi.send(req, apiCreate);
+                return rs?.success;
             }
 
             /**
@@ -159,35 +100,48 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
             // MAIN
             let res = false;
             try {
+                logger.info(`Create new WebPush subscription for front '${frontRef}'.`);
                 const key = await loadServerKey();
+                logger.info(`The server's VAPID key is loaded.`);
                 /** @type {PushSubscription} */
                 const pushSubscription = await subscribePush(key);
+                logger.info(`The browser vendor has accepted the subscription.`);
                 // save subscription to IDB Store
                 const obj = pushSubscription.toJSON();
                 // noinspection JSCheckFunctionSignatures
                 const dto = dtoSubscript.createDto(obj);
-                const frontId = await saveSubscription(dto);
-                if (frontId) {
-                    dto.frontId = frontId;
-                    await storeSingle.set(STORE_KEY, dto);
-                    res = true;
-                    _cache = dto;
-                    logger.info(`Web Push API subscription for the user is done. Keys are stored to IDB.`);
-                }
+                res = await saveSubscription(frontRef, dto);
+                if (res) {
+                    logger.info(`User keys are stored on the back. Web Push API subscription for this front is done.`);
+                } else
+                    logger.error(`Cannot save WebPush API subscription on the back.`);
             } catch (e) {
                 logger.error(e);
             }
             return res;
         }
 
-        this.unsubscribe = async function () {
+        /**
+         * @param {number} frontRef backend ID for the related front
+         * @return {Promise<boolean>} 'true' if unsubscription is succeeded
+         */
+        this.unsubscribe = async function (frontRef) {
+            logger.info(`Delete the WebPush API subscription (front: ${frontRef}).`);
             const sw = await navigator.serviceWorker.ready;
             const sub = await sw.pushManager.getSubscription();
-            if (sub) await sub.unsubscribe();
-            const event = esfRemoveReq.createDto();
-            portalBack.publish(event);
-            await storeSingle.delete(STORE_KEY);
-            _cache = undefined;
+            if (sub) {
+                await sub.unsubscribe();
+                logger.info(`The WebPush API subscription is deleted on the front '${frontRef}'.`);
+            }
+            const req = apiDelete.createReq();
+            req.frontRef = frontRef;
+            /** @type {TeqFw_Web_Push_Shared_Web_Api_Subscript_Delete.Response} */
+            const rs = await connApi.send(req, apiDelete);
+            if (rs?.success)
+                logger.info(`The WebPush API subscription is deleted on the back.`);
+            else
+                logger.error(`The WebPush API subscription is not deleted on the back.`);
+            return rs?.success;
         }
     }
 }

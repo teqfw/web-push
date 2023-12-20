@@ -29,7 +29,7 @@ export default function (
     // VARS
     /** @type {TeqFw_Web_Push_Back_Api_Dto_Config_Local} */
     const cfgLocal = config.getLocal(DEF.SHARED.NAME);
-    const email = `mailto:${cfgLocal?.email}`;
+    const email = `mailto:${cfgLocal?.email ?? 'info@teqfw.com'}`;
     const {publicKey, privateKey} = actLoadKeys();
 
     // INNER FUNCTIONS
