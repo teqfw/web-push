@@ -31,13 +31,11 @@ class Response {
  */
 export default class TeqFw_Web_Push_Shared_Web_Api_Key_Load {
     /**
-     * @param {TeqFw_Core_Shared_Util_Cast.castInt|function} castInt
-     * @param {TeqFw_Core_Shared_Util_Cast.castString|function} castString
+     * @param {TeqFw_Core_Shared_Util_Cast} cast
      */
     constructor(
         {
-            'TeqFw_Core_Shared_Util_Cast.castInt': castInt,
-            'TeqFw_Core_Shared_Util_Cast.castString': castString,
+            TeqFw_Core_Shared_Util_Cast$: cast,
         }
     ) {
         // INSTANCE METHODS
@@ -50,7 +48,7 @@ export default class TeqFw_Web_Push_Shared_Web_Api_Key_Load {
             // create new DTO
             const res = new Request();
             // cast known attributes
-            res.frontRef = castInt(data?.frontRef);
+            res.frontRef = cast.int(data?.frontRef);
             return res;
         };
 
@@ -62,7 +60,7 @@ export default class TeqFw_Web_Push_Shared_Web_Api_Key_Load {
             // create new DTO
             const res = new Response();
             // cast known attributes
-            res.key = castString(data?.key);
+            res.key = cast.string(data?.key);
             return res;
         };
     }

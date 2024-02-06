@@ -17,16 +17,16 @@ const RESULT = {
 Object.freeze(RESULT);
 /**
  * @param {TeqFw_Db_Back_Api_RDb_CrudEngine} crud
- * @param {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} rdbSubscript
+ * @param {TeqFw_Web_Push_Back_RDb_Schema_Subscript} rdbSubscript
  */
 export default function (
     {
         TeqFw_Db_Back_Api_RDb_CrudEngine$: crud,
-        TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$: rdbSubscript,
+        TeqFw_Web_Push_Back_RDb_Schema_Subscript$: rdbSubscript,
     }
 ) {
     // VARS
-    /** @type {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.ATTR} */
+    /** @type {typeof TeqFw_Web_Push_Back_RDb_Schema_Subscript.ATTR} */
     const ATTR = rdbSubscript.getAttributes();
 
 

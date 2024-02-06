@@ -30,13 +30,11 @@ class Response {
  */
 export default class TeqFw_Web_Push_Shared_Web_Api_Subscript_Delete {
     /**
-     * @param {TeqFw_Core_Shared_Util_Cast.castBoolean|function} castBoolean
-     * @param {TeqFw_Core_Shared_Util_Cast.castInt|function} castInt
+     * @param {TeqFw_Core_Shared_Util_Cast} cast
      */
     constructor(
         {
-            'TeqFw_Core_Shared_Util_Cast.castBoolean': castBoolean,
-            'TeqFw_Core_Shared_Util_Cast.castInt': castInt,
+            TeqFw_Core_Shared_Util_Cast$: cast,
         }
     ) {
         // INSTANCE METHODS
@@ -49,7 +47,7 @@ export default class TeqFw_Web_Push_Shared_Web_Api_Subscript_Delete {
             // create new DTO
             const res = new Request();
             // cast known attributes
-            res.frontRef = castInt(data?.frontRef);
+            res.frontRef = cast.int(data?.frontRef);
             return res;
         };
 
@@ -61,7 +59,7 @@ export default class TeqFw_Web_Push_Shared_Web_Api_Subscript_Delete {
             // create new DTO
             const res = new Response();
             // cast known attributes
-            res.success = castBoolean(data?.success);
+            res.success = cast.boolean(data?.success);
             return res;
         };
     }

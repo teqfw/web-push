@@ -1,5 +1,7 @@
 /**
  * Add/get subscriptions using actions.
+ *
+ * @deprecated This code is for education purposes only.
  */
 import assert from 'assert';
 import {container, config, dbConnect} from '@teqfw/test';
@@ -80,7 +82,7 @@ describe('Act_Subscript', function () {
             const userId = USER1_ID;
             const {items} = await actGet({trx, frontId: userId});
             assert(Array.isArray(items));
-            /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Dto} */
+            /** @type {TeqFw_Web_Push_Back_RDb_Schema_Subscript.Dto} */
             const first = items[0];
             assert(first.front_ref === USER1_ID);
             await trx.commit();

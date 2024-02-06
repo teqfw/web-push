@@ -11,7 +11,7 @@ export default class TeqFw_Web_Push_Back_Web_Api_Subscript_Delete {
      * @param {TeqFw_Web_Push_Shared_Web_Api_Subscript_Delete} endpoint
      * @param {TeqFw_Db_Back_RDb_IConnect} conn
      * @param {TeqFw_Db_Back_Api_RDb_CrudEngine} crud
-     * @param {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} rdbSubs
+     * @param {TeqFw_Web_Push_Back_RDb_Schema_Subscript} rdbSubs
      */
     constructor(
         {
@@ -19,7 +19,7 @@ export default class TeqFw_Web_Push_Back_Web_Api_Subscript_Delete {
             TeqFw_Web_Push_Shared_Web_Api_Subscript_Delete$: endpoint,
             TeqFw_Db_Back_RDb_IConnect$: conn,
             TeqFw_Db_Back_Api_RDb_CrudEngine$: crud,
-            TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$: rdbSubs,
+            TeqFw_Web_Push_Back_RDb_Schema_Subscript$: rdbSubs,
         }
     ) {
         // INSTANCE METHODS
@@ -39,7 +39,7 @@ export default class TeqFw_Web_Push_Back_Web_Api_Subscript_Delete {
             try {
                 const frontId = req.frontRef;
                 // find existing subscription by frontRef
-                /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Dto} */
+                /** @type {TeqFw_Web_Push_Back_RDb_Schema_Subscript.Dto} */
                 const found = await crud.readOne(trx, rdbSubs, frontId);
                 // update or create new one
                 if (found) await crud.deleteOne(trx, rdbSubs, found);

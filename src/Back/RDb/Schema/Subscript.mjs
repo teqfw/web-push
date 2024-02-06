@@ -1,9 +1,9 @@
 /**
  *  The subscriptions with keys to send notifications using WebPush API.
- *  @namespace TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript
+ *  @namespace TeqFw_Web_Push_Back_RDb_Schema_Subscript
  */
 // MODULE'S VARS
-const NS = 'TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript';
+const NS = 'TeqFw_Web_Push_Back_RDb_Schema_Subscript';
 /**
  * Path to the entity in plugin's DEM.
  * @type {string}
@@ -11,7 +11,7 @@ const NS = 'TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript';
 const ENTITY = '/web/push/subscript';
 
 /**
- * @memberOf TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript
+ * @memberOf TeqFw_Web_Push_Back_RDb_Schema_Subscript
  * @type {Object}
  */
 const ATTR = {
@@ -26,7 +26,7 @@ const ATTR = {
 
 // MODULE'S CLASSES
 /**
- * @memberOf TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript
+ * @memberOf TeqFw_Web_Push_Back_RDb_Schema_Subscript
  */
 class Dto {
     static namespace = NS;
@@ -50,7 +50,7 @@ class Dto {
 /**
  * @implements TeqFw_Db_Back_RDb_Meta_IEntity
  */
-export default class TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript {
+export default class TeqFw_Web_Push_Back_RDb_Schema_Subscript {
     /**
      * @param {TeqFw_Web_Push_Back_Defaults} DEF
      * @param {TeqFw_Db_Back_RDb_Schema_EntityBase} base
@@ -71,8 +71,8 @@ export default class TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript {
     ) {
         // INSTANCE METHODS
         /**
-         * @param {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Dto} [data]
-         * @return {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Dto}
+         * @param {TeqFw_Web_Push_Back_RDb_Schema_Subscript.Dto} [data]
+         * @return {TeqFw_Web_Push_Back_RDb_Schema_Subscript.Dto}
          */
         this.createDto = function (data) {
             const res = new Dto();
@@ -88,7 +88,7 @@ export default class TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript {
 
         /**
          * Set JSDoc return type, real code is in `TeqFw_Db_Back_RDb_Schema_EntityBase`.
-         * @return {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.ATTR}
+         * @return {typeof TeqFw_Web_Push_Back_RDb_Schema_Subscript.ATTR}
          */
         this.getAttributes = function () {};
 

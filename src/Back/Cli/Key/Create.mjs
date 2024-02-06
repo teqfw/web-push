@@ -1,5 +1,5 @@
 /**
- * Create new server keys for Web Push API.
+ * Create new server keys for WebPush API.
  *
  * @namespace TeqFw_Web_Push_Back_Cli_Key_Create
  */
@@ -67,7 +67,7 @@ export default function Factory(
     const res = fCommand.create();
     res.realm = DEF.CLI_PREFIX;
     res.name = 'key-create';
-    res.desc = 'Create new server keys for Web Push API.';
+    res.desc = 'Create new server keys for WebPush API.';
     res.action = action;
     return res;
 }

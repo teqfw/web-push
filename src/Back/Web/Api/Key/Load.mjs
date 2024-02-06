@@ -43,7 +43,7 @@ export default class TeqFw_Web_Push_Back_Web_Api_Key_Load {
                 /** @type {{publicKey: string, privateKey: string}} */
                 const keys = actLoad();
                 _cache = keys?.publicKey;
-                logger.info(`Public key for Web Push subscription is cached by API requests handler.`);
+                logger.info(`Public key for WebPush subscription is cached by API requests handler.`);
             }
             res.key = _cache;
         };

@@ -7,24 +7,24 @@
 // MODULE'S VARS
 const NS = 'TeqFw_Web_Push_Back_Act_Subscript_GetByFrontId';
 /**
- * @param {TeqFw_Db_Back_RDb_Meta_IEntity|TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} meta
+ * @param {TeqFw_Db_Back_RDb_Meta_IEntity|TeqFw_Web_Push_Back_RDb_Schema_Subscript} meta
  * @param {TeqFw_Db_Back_Api_RDb_CrudEngine} crud
  */
 export default function (
     {
-        TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$: meta,
+        TeqFw_Web_Push_Back_RDb_Schema_Subscript$: meta,
         TeqFw_Db_Back_Api_RDb_CrudEngine$: crud,
     }
 ) {
     // VARS
-    /** @type {typeof TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.ATTR} */
+    /** @type {typeof TeqFw_Web_Push_Back_RDb_Schema_Subscript.ATTR} */
     const ATTR = meta.getAttributes();
 
     // FUNCS
     /**
      * @param trx
      * @param {number} frontId
-     * @return {Promise<{items: TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript[]}>}
+     * @return {Promise<{items: TeqFw_Web_Push_Back_RDb_Schema_Subscript[]}>}
      * @memberOf TeqFw_Web_Push_Back_Act_Subscript_GetByFrontId
      * @deprecated use CRUD readOne()
      */

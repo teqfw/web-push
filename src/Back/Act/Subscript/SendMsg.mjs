@@ -14,7 +14,7 @@ const NS = 'TeqFw_Web_Push_Back_Act_Subscript_SendMsg';
  * @param {TeqFw_Web_Push_Back_Defaults} DEF
  * @param {TeqFw_Core_Back_Config} config
  * @param {TeqFw_Db_Back_Api_RDb_CrudEngine} crud
- * @param {TeqFw_Db_Back_RDb_Meta_IEntity|TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript} rdbSubscript
+ * @param {TeqFw_Db_Back_RDb_Meta_IEntity|TeqFw_Web_Push_Back_RDb_Schema_Subscript} rdbSubscript
  * @param {TeqFw_Web_Push_Back_Act_Subscript_LoadKeys.act|function} actLoadKeys
  */
 export default function (
@@ -22,12 +22,12 @@ export default function (
         TeqFw_Web_Push_Back_Defaults$: DEF,
         TeqFw_Core_Back_Config$: config,
         TeqFw_Db_Back_Api_RDb_CrudEngine$: crud,
-        TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript$: rdbSubscript,
+        TeqFw_Web_Push_Back_RDb_Schema_Subscript$: rdbSubscript,
         TeqFw_Web_Push_Back_Act_Subscript_LoadKeys$: actLoadKeys,
     }
 ) {
     // VARS
-    /** @type {TeqFw_Web_Push_Back_Api_Dto_Config_Local} */
+    /** @type {TeqFw_Web_Push_Back_Plugin_Dto_Config_Local.Dto} */
     const cfgLocal = config.getLocal(DEF.SHARED.NAME);
     const email = `mailto:${cfgLocal?.email ?? 'info@teqfw.com'}`;
     const {publicKey, privateKey} = actLoadKeys();
@@ -45,7 +45,7 @@ export default function (
     async function act({trx, title, body, frontId}) {
         let res;
         try {
-            /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript.Dto} */
+            /** @type {TeqFw_Web_Push_Back_RDb_Schema_Subscript.Dto} */
             const found = await crud.readOne(trx, rdbSubscript, frontId);
             if (found) {
                 const endpoint = found.endpoint;

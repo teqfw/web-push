@@ -1,10 +1,10 @@
 # @teqfw/user: releases
 
-# 0.x.x
+# 0.3.0 - TODO
 
 * Restructure the directories and files.
 * Switch to the new format of dependency injection.
-*
+* Use API instead of Events.
 
 ## 0.2.0
 

@@ -1,5 +1,5 @@
 /**
- * Web Push subscription model encapsulates logic to work with Web Push API.
+ * The WebPush subscription model encapsulates the logic to work with the WebPush API.
  *
  * Model stores front subscription data in IDB singletons store (from @teqfw/web).
  *
@@ -26,7 +26,7 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
     ) {
         // INSTANCE METHODS
         /**
-         * Return 'true' if browser Web Push API compliant.
+         * Return 'true' if browser WebPush API compliant.
          * @return {Promise<boolean>}
          */
         this.canSubscribe = async () => {
@@ -45,7 +45,7 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
         }
 
         /**
-         * Load public key from server to subscribe to use Web Push API then subscribe.
+         * Load public key from server to subscribe to use WebPush API then subscribe.
          *
          * @param {number} frontRef backend ID for the related front
          * @return {Promise<boolean>} 'true' if subscription is succeeded
@@ -81,7 +81,7 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
             }
 
             /**
-             * Send Web Push API subscription request to the browser vendor.
+             * Send WebPush API subscription request to the browser vendor.
              * @param {string} key loaded server's public key to use with Push API
              * @return {Promise<PushSubscription>}
              */
@@ -112,7 +112,7 @@ export default class TeqFw_Web_Push_Front_Mod_Subscription {
                 const dto = dtoSubscript.createDto(obj);
                 res = await saveSubscription(frontRef, dto);
                 if (res) {
-                    logger.info(`User keys are stored on the back. Web Push API subscription for this front is done.`);
+                    logger.info(`User keys are stored on the back. WebPush API subscription for this front is done.`);
                 } else
                     logger.error(`Cannot save WebPush API subscription on the back.`);
             } catch (e) {

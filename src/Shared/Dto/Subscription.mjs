@@ -1,5 +1,5 @@
 /**
- * DTO for user's subscription to Web Push API.
+ * DTO for user's subscription to WebPush API.
  */
 // MODULE'S VARS
 const NS = 'TeqFw_Web_Push_Shared_Dto_Subscription';
@@ -25,16 +25,12 @@ class Dto {
  */
 export default class TeqFw_Web_Push_Shared_Dto_Subscription {
     /**
-     * @param {TeqFw_Core_Shared_Util_Cast.castDate|function} castDate
-     * @param {TeqFw_Core_Shared_Util_Cast.castInt|function} castInt
-     * @param {TeqFw_Core_Shared_Util_Cast.castString|function} castString
+     * @param {TeqFw_Core_Shared_Util_Cast} cast
      * @param {TeqFw_Web_Push_Shared_Dto_Subscription_Keys} dtoKeys
      */
     constructor(
         {
-            'TeqFw_Core_Shared_Util_Cast.castDate': castDate,
-            'TeqFw_Core_Shared_Util_Cast.castInt': castInt,
-            'TeqFw_Core_Shared_Util_Cast.castString': castString,
+            TeqFw_Core_Shared_Util_Cast$: cast,
             TeqFw_Web_Push_Shared_Dto_Subscription_Keys$: dtoKeys,
         }
     ) {
@@ -45,9 +41,9 @@ export default class TeqFw_Web_Push_Shared_Dto_Subscription {
          */
         this.createDto = function (data = null) {
             const res = new Dto();
-            res.expirationTime = castDate(data?.expirationTime);
-            res.endpoint = castString(data?.endpoint);
-            res.frontId = castInt(data?.frontId);
+            res.expirationTime = cast.date(data?.expirationTime);
+            res.endpoint = cast.string(data?.endpoint);
+            res.frontId = cast.int(data?.frontId);
             res.keys = dtoKeys.createDto(data?.keys);
             return res;
         }

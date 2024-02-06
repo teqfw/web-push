@@ -47,7 +47,7 @@ export default function Factory(
         try {
             const res = await actSendMsg({trx, title, body, frontId});
             if (res) logger.info(JSON.stringify(res));
-            else logger.info(`Web Push is failed.`);
+            else logger.info(`WebPush is failed.`);
             await trx.commit();
         } catch (e) {
             await trx.rollback();
