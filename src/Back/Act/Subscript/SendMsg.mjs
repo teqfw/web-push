@@ -43,7 +43,7 @@ export default function (
      * @memberOf TeqFw_Web_Push_Back_Act_Subscript_SendMsg
      */
     async function act({trx, title, body, frontId}) {
-        let res;
+        let subscriptId, code;
         try {
             /** @type {TeqFw_Web_Push_Back_RDb_Schema_Subscript.Dto} */
             const found = await crud.readOne(trx, rdbSubscript, frontId);
@@ -57,12 +57,14 @@ export default function (
                 );
                 const pushSubscription = {endpoint, keys};
                 const payload = {title, body};
-                res = await webPush.sendNotification(pushSubscription, JSON.stringify(payload));
+                const rs = await webPush.sendNotification(pushSubscription, JSON.stringify(payload));
+                code = rs.code;
+                subscriptId = rs.subscriptId;
             }
         } catch (e) {
             console.log(e);
         }
-        return res;
+        return {subscriptId, code};
     }
 
     // MAIN
