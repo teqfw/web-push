@@ -1,6 +1,6 @@
 # @teqfw/user: releases
 
-# 0.3.0 - TODO
+# 0.3.0
 
 * Restructure the directories and files.
 * Switch to the new format of dependency injection.
