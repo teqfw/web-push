@@ -1,5 +1,5 @@
 /**
- * Create new server keys for Web Push API.
+ * Create new server keys for WebPush API.
  *
  * @namespace TeqFw_Web_Push_Back_Cli_Key_Create
  */
@@ -15,31 +15,28 @@ const NS = 'TeqFw_Web_Push_Back_Cli_Key_Create';
 /**
  * Factory to create CLI command.
  *
- * @param {TeqFw_Di_Shared_SpecProxy} spec
- * @returns {TeqFw_Core_Back_Api_Dto_Command}
- * @constructor
- * @memberOf TeqFw_Web_Push_Back_Cli_Key_Create
+ * @param {TeqFw_Web_Push_Back_Defaults} DEF
+ * @param {TeqFw_Core_Back_Config} config
+ * @param {TeqFw_Core_Shared_Api_Logger} logger -  instance
+ * @param {TeqFw_Core_Back_Api_Dto_Command.Factory} fCommand
  */
-export default function Factory(spec) {
-    // EXTRACT DEPS
-    /** @type {TeqFw_Web_Push_Back_Defaults} */
-    const DEF = spec['TeqFw_Web_Push_Back_Defaults$'];
-    /** @type {TeqFw_Core_Back_Config} */
-    const config = spec['TeqFw_Core_Back_Config$'];
-    /** @type {TeqFw_Core_Shared_Logger} */
-    const logger = spec['TeqFw_Core_Shared_Logger$'];
-    /** @type {TeqFw_Core_Back_Api_Dto_Command.Factory} */
-    const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$'];
+export default function Factory(
+    {
+        TeqFw_Web_Push_Back_Defaults$: DEF,
+        TeqFw_Core_Back_Config$: config,
+        TeqFw_Core_Shared_Api_Logger$$: logger,
+        'TeqFw_Core_Back_Api_Dto_Command#Factory$': fCommand,
+    }
+) {
 
-
-    // DEFINE INNER FUNCTIONS
+    // FUNCS
     /**
      * Command action.
      * @returns {Promise<void>}
      * @memberOf TeqFw_Web_Push_Back_Cli_Key_Create
      */
     async function action() {
-        // DEFINE INNER FUNCTIONS
+        // FUNCS
         async function keyExists(path) {
             if (existsSync(path)) {
                 logger.error(`There is VAPID keys for the application in '${path}'`);
@@ -48,10 +45,10 @@ export default function Factory(spec) {
             return false;
         }
 
-        // MAIN FUNCTIONALITY
+        // MAIN
         logger.reset(false);
         try {
-            const root = config.getBoot().projectRoot;
+            const root = config.getPathToRoot();
             const path = join(root, DEF.FILE_VAPID_KEYS);
             if (!(await keyExists(path))) {
                 const vapidKeys = webPush.generateVAPIDKeys();
@@ -64,13 +61,13 @@ export default function Factory(spec) {
         }
     }
 
-    Object.defineProperty(action, 'name', {value: `${NS}.action`});
+    Object.defineProperty(action, 'namespace', {value: NS});
 
     // COMPOSE RESULT
     const res = fCommand.create();
     res.realm = DEF.CLI_PREFIX;
     res.name = 'key-create';
-    res.desc = 'Create new server keys for Web Push API.';
+    res.desc = 'Create new server keys for WebPush API.';
     res.action = action;
     return res;
 }

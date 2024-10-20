@@ -8,36 +8,31 @@
 // DEFINE WORKING VARS
 const NS = 'TeqFw_Web_Push_Back_Cli_Send';
 const OPT_BODY = 'body';
+const OPT_FRONT = 'front';
 const OPT_TITLE = 'title';
-const OPT_USER = 'user';
 
 // DEFINE MODULE'S FUNCTIONS
 /**
  * Factory to create CLI command.
  *
- * @param {TeqFw_Di_Shared_SpecProxy} spec
- * @returns {TeqFw_Core_Back_Api_Dto_Command}
- * @constructor
- * @memberOf TeqFw_Web_Push_Back_Cli_Send
+ * @param {TeqFw_Web_Push_Back_Defaults} DEF
+ * @param {TeqFw_Core_Shared_Api_Logger} logger -  instance
+ * @param {TeqFw_Db_Back_RDb_IConnect} rdb
+ * @param {TeqFw_Core_Back_Api_Dto_Command.Factory} fCommand
+ * @param {TeqFw_Core_Back_Api_Dto_Command_Option.Factory} fOpt
+ * @param {TeqFw_Web_Push_Back_Act_Subscript_SendMsg.act|function} actSendMsg
  */
-export default function Factory(spec) {
-    // EXTRACT DEPS
-    /** @type {TeqFw_Web_Push_Back_Defaults} */
-    const DEF = spec['TeqFw_Web_Push_Back_Defaults$'];
-    /** @type {TeqFw_Core_Shared_Logger} */
-    const logger = spec['TeqFw_Core_Shared_Logger$'];
-    /** @type {TeqFw_Db_Back_RDb_IConnect} */
-    const connector = spec['TeqFw_Db_Back_RDb_IConnect$'];
-    /** @type {TeqFw_Core_Back_Api_Dto_Command.Factory} */
-    const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$'];
-    /** @type {TeqFw_Core_Back_Api_Dto_Command_Option.Factory} */
-    const fOpt = spec['TeqFw_Core_Back_Api_Dto_Command_Option#Factory$'];
-    /** @type {TeqFw_Web_Push_Back_Act_Subscript_GetByUserId|Function} */
-    const actGetByUser = spec['TeqFw_Web_Push_Back_Act_Subscript_GetByUserId$'];
-    /** @type {TeqFw_Web_Push_Back_Act_Subscript_SendMsg|Function} */
-    const actSendMsg = spec['TeqFw_Web_Push_Back_Act_Subscript_SendMsg$'];
-
-    // DEFINE INNER FUNCTIONS
+export default function Factory(
+    {
+        TeqFw_Web_Push_Back_Defaults$: DEF,
+        TeqFw_Core_Shared_Api_Logger$$: logger,
+        TeqFw_Db_Back_RDb_IConnect$: rdb,
+        'TeqFw_Core_Back_Api_Dto_Command#Factory$': fCommand,
+        'TeqFw_Core_Back_Api_Dto_Command_Option#Factory$': fOpt,
+        TeqFw_Web_Push_Back_Act_Subscript_SendMsg$: actSendMsg,
+    }
+) {
+    // FUNCS
     /**
      * Command action.
      * @returns {Promise<void>}
@@ -45,31 +40,23 @@ export default function Factory(spec) {
      */
     async function action(opts) {
         const body = opts[OPT_BODY];
+        const frontId = opts[OPT_FRONT];
         const title = opts[OPT_TITLE];
-        const userId = opts[OPT_USER];
-        logger.reset();
-        logger.pause(false);
-        logger.info(`Push message "${body}" to user #${userId}.`);
-        const trx = await connector.startTransaction();
+        logger.info(`Push message "${body}" to front #${frontId}.`);
+        const trx = await rdb.startTransaction();
         try {
-            /** @type {TeqFw_Web_Push_Back_Store_RDb_Schema_Subscript[]} */
-            const {items} = await actGetByUser({trx, userId});
-            for (const item of items) {
-                const endpoint = item.endpoint;
-                const auth = item.key_auth;
-                const p256dh = item.key_p256dh;
-                const res = await actSendMsg({title, body, endpoint, auth, p256dh});
-                logger.info(JSON.stringify(res));
-            }
-            trx.commit();
+            const res = await actSendMsg({trx, title, body, frontId});
+            if (res) logger.info(JSON.stringify(res));
+            else logger.info(`WebPush is failed.`);
+            await trx.commit();
         } catch (e) {
-            trx.rollback();
+            await trx.rollback();
             logger.error(`${e.toString()}`);
         }
-        await connector.disconnect();
+        await rdb.disconnect();
     }
 
-    Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});
+    Object.defineProperty(action, 'namespace', {value: NS});
 
     // COMPOSE RESULT
     const res = fCommand.create();
@@ -79,8 +66,8 @@ export default function Factory(spec) {
     res.action = action;
     // add option --user
     const optUser = fOpt.create();
-    optUser.flags = `-u, --${OPT_USER} <user_id>`;
-    optUser.description = `User ID for recipient of the message`;
+    optUser.flags = `-f, --${OPT_FRONT} <front_id>`;
+    optUser.description = `Front ID for recipient of the message`;
     res.opts.push(optUser);
     // add option --body
     const optTitle = fOpt.create();

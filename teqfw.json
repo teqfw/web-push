@@ -2,7 +2,8 @@
   "@teqfw/di": {
     "autoload": {
       "ns": "TeqFw_Web_Push",
-      "path": "./src"
+      "path": "./src",
+      "ext": "mjs"
     }
   },
   "@teqfw/core": {
@@ -11,10 +12,11 @@
       "TeqFw_Web_Push_Back_Cli_Key_Create"
     ]
   },
-  "@teqfw/web": {
+  "@teqfw/web-api": {
     "services": [
-      "TeqFw_Web_Push_Back_WAPI_Load_ServerKey",
-      "TeqFw_Web_Push_Back_WAPI_Subscript_Save"
+      "TeqFw_Web_Push_Back_Web_Api_Key_Load",
+      "TeqFw_Web_Push_Back_Web_Api_Subscript_Create",
+      "TeqFw_Web_Push_Back_Web_Api_Subscript_Delete"
     ]
   }
 }

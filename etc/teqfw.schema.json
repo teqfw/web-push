@@ -6,26 +6,31 @@
           "comment": "@teqfw/web-push entities and packages.",
           "entity": {
             "subscript": {
-              "comment": "Users subscriptions.",
+              "comment": "Front apps subscriptions.",
               "attr": {
-                "id": {"type": "id"},
-                "user_ref": {"type": "ref"},
+                "front_ref": {"type": "ref"},
+                "enabled": {"type": "boolean"},
                 "date_created": {
                   "comment": "Date-time for subscription registration.",
                   "type": "datetime",
                   "default": "current"
+                },
+                "date_expired": {
+                  "comment": "Date-time for expiration date.",
+                  "type": "datetime",
+                  "nullable": true
                 },
                 "endpoint": {"type": "string"},
                 "key_auth": {"type": "string"},
                 "key_p256dh": {"type": "string"}
               },
               "index": {
-                "uq_auth": {"type": "unique", "attrs": ["user_ref", "key_auth"]}
+                "pk": {"type": "primary", "attrs": ["front_ref"]}
               },
               "relation": {
-                "user": {
-                  "attrs": ["user_ref"],
-                  "ref": {"path": "/user", "attrs": ["id"]},
+                "front": {
+                  "attrs": ["front_ref"],
+                  "ref": {"path": "/web/auth/front", "attrs": ["id"]},
                   "action": {"delete": "cascade", "update": "cascade"}
                 }
               }
@@ -36,6 +41,6 @@
     }
   },
   "refs": {
-    "/user": ["id"]
+    "/web/auth/front": ["id"]
   }
 }
