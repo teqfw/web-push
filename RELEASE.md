@@ -3,8 +3,9 @@
 # 0.3.0
 
 * Restructure the directories and files.
-* Switch to the new format of dependency injection.
-* Use API instead of Events.
+* Switch to the new format for dependency injection.
+* Use API instead of events.
+* Introduce a new format for dependency IDs in teqfw/di.
 
 ## 0.2.0
 
