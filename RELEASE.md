@@ -1,11 +1,14 @@
 # @teqfw/user: releases
 
+# 0.3.1
+
+* Introduce a new format for dependency IDs in teqfw/di.
+
 # 0.3.0
 
 * Restructure the directories and files.
 * Switch to the new format for dependency injection.
 * Use API instead of events.
-* Introduce a new format for dependency IDs in teqfw/di.
 
 ## 0.2.0
 

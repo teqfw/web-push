@@ -1,6 +1,6 @@
 {
   "name": "@teqfw/web-push",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "TeqFW plugin to use WebPush API in teq-apps.",
   "keywords": [
     "ecmascript 2015",
